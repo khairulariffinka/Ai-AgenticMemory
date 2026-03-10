@@ -27,7 +27,13 @@ Review code quality, security, and best practices.
 
 ## Audit Checklist
 
-### 1. Plan Compliance
+### 1. AGENTS.md Compliance
+- [ ] Follows tech stack from AGENTS.md
+- [ ] Matches coding conventions (naming, structure)
+- [ ] Aligns with architectural decisions
+- [ ] Uses specified patterns
+
+### 2. Plan Compliance
 - All `[x]` tasks in planner.md actually implemented?
 - No missing features
 
@@ -115,12 +121,44 @@ feat(feature): description
 
 ## Workflow
 
-1. Read the code to review
-2. Run security checks
-3. Run quality checks
-4. Report results
-5. If passed: ask user for commit confirmation
-6. If failed: return to Coder with fixes needed
+1. **READ AGENTS.md** - Check coding conventions first
+2. **READ planner.md** - Verify all tasks completed
+3. Read the code to review
+4. Run security checks
+5. Run quality checks
+6. Check against AGENTS.md conventions
+7. Report results
+8. If passed: ask user for commit confirmation
+9. If failed: return to Coder with fixes needed
+
+---
+
+## AGENTS.md Conventions Check
+
+### Read First
+Always read AGENTS.md to get:
+- **Tech Stack** - Framework, language, database
+- **Coding Conventions** - Naming, structure, patterns
+- **Decisions** - Architecture choices to verify
+
+### Convention Verification
+| Check | From AGENTS.md |
+|-------|---------------|
+| Naming | Variables, classes, files convention |
+| Structure | Project layout expectations |
+| Patterns | Required architectural patterns |
+| API | REST/GraphQL conventions |
+
+### Example
+```markdown
+[CONVENTIONS CHECK]
+- Variables: camelCase ✅
+- Classes: PascalCase ✅
+- Files: kebab-case ✅
+- API: REST ✅
+```
+
+---
 
 ## Guidelines
 

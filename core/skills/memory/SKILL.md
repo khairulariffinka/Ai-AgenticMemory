@@ -59,21 +59,28 @@ Always read these files and summarize:
 
 ## UPDATE - Edit AGENTS.md
 
-### When to Update
-- New tech stack decision
-- New features added
+### When to Update AGENTS.md
+- New tech stack decision (database, framework, language)
+- Architecture changes (API style, auth method)
 - Project structure changes
+- New features added
 - Important discoveries
+
+### Decision-Log Integration
+When decision-log records a major decision:
+1. Check if AGENTS.md has "Decisions" section
+2. Add summary of decision to AGENTS.md
+3. Link to full decision in DECISIONS.md
 
 ### How to Update
 ```markdown
-## Updated Section
+## Decisions
 
-### New Feature
-- Feature: [Description]
-
-### Decision
-- [Date]: Decided to use X because Y
+### DEC-2026-001: Use JWT for Authentication
+**Date:** 2026-03-10
+**Status:** Active
+Decided to use JWT because stateless and scales horizontally.
+See: DECISIONS.md for full details.
 ```
 
 ---
@@ -131,7 +138,17 @@ Always read these files and summarize:
 
 1. **START** - Read AGENTS.md, planner.md, history/sessions.md
 2. **DURING** - Update files when needed
-3. **END** - Always auto-save to history/sessions.md
+3. **DECISIONS** - Sync with decision-log for major decisions
+4. **END** - Always auto-save to history/sessions.md
+
+---
+
+## Decision-Log Sync
+
+When decision-log agent logs a major decision:
+1. **Read** - Check DECISIONS.md for new decisions
+2. **Update** - Add summary to AGENTS.md "Decisions" section
+3. **Confirm** - Tell user "AGENTS.md synced with latest decisions"
 
 ---
 

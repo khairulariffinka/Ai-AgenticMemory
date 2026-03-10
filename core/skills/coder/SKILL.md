@@ -28,8 +28,37 @@ Write code based on planner.md task breakdown.
 1. **Read AGENTS.md FIRST** - Get tech stack and conventions
 2. **Read planner.md** - Get current task to work on
 3. **Identify next unchecked task** - Look for `[ ]` task
-4. **Write code** - Implement the task following AGENTS.md conventions
-5. **Update planner.md** - Mark task as `[x]`
+4. **Check for decisions** - Use decision-log if architectural choice needed
+5. **Write code** - Implement the task following AGENTS.md conventions
+6. **Update planner.md** - Mark task as `[x]`
+
+---
+
+## Decision Logging Reminder
+
+When making significant architectural choices:
+
+```
+[DECISION POINT DETECTED]
+- Tech stack: PostgreSQL vs MongoDB?
+- Pattern: Repository vs Active Record?
+
+→ Use @decision-log to document the choice
+→ Then continue with implementation
+```
+
+### When to Log
+- Database selection
+- Auth method (JWT, Sessions, OAuth)
+- API style (REST, GraphQL)
+- Major framework choices
+- Architecture patterns
+
+After logging:
+1. Update AGENTS.md with the decision
+2. Continue with implementation
+
+---
 
 ## AGENTS.md Integration (CRITICAL)
 
