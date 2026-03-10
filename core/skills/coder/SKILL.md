@@ -25,11 +25,27 @@ Write code based on planner.md task breakdown.
 
 ## Workflow
 
-1. **Read planner.md** - Get current task to work on
-2. **Identify next unchecked task** - Look for `[ ]` task
-3. **Read project context** - Check AGENTS.md for tech stack
-4. **Write code** - Implement the task
+1. **Read AGENTS.md FIRST** - Get tech stack and conventions
+2. **Read planner.md** - Get current task to work on
+3. **Identify next unchecked task** - Look for `[ ]` task
+4. **Write code** - Implement the task following AGENTS.md conventions
 5. **Update planner.md** - Mark task as `[x]`
+
+## AGENTS.md Integration (CRITICAL)
+
+**ALWAYS read AGENTS.md before writing any code:**
+
+```markdown
+# AGENTS.md contains:
+- Tech stack (framework, language, database)
+- Coding conventions
+- Project structure
+- Feature requirements
+```
+
+If AGENTS.md doesn't exist:
+- Ask user for tech stack preference
+- Or create basic AGENTS.md from planner.md
 
 ## Tech Stack Detection
 
@@ -70,8 +86,9 @@ Auto-detect common structures:
 
 ## Rules
 
+- **ALWAYS read AGENTS.md first** - Never skip this step
 - Write code only - don't plan or change logic
-- Follow project conventions (check AGENTS.md)
+- **Follow AGENTS.md conventions** - Tech stack, naming, structure
 - Minimal comments unless necessary
 - Output: code block + filename
 - Always mark task as complete in planner.md

@@ -187,6 +187,53 @@ Ai-AgenticMemory/
    [TAB] → agentic-memory → "hello!"
    ```
 
+---
+
+## Project Context: AGENTS.md
+
+AgenticMemory uses the official OpenCode **AGENTS.md** file as the source of truth for project context.
+
+### What is AGENTS.md?
+
+AGENTS.md is the official OpenCode file for project context:
+- **Tech Stack** - Framework, language, database
+- **Coding Conventions** - Naming, structure, patterns
+- **Features** - Project requirements and features
+- **Decisions** - Major design decisions with rationale
+
+### AgenticMemory Workflow
+
+```
+1. PLANNER: Creates plan → Auto-creates AGENTS.md if not exists
+2. CODER: Reads AGENTS.md → Uses specified tech stack
+3. DECISION-LOG: Logs decisions → Updates AGENTS.md
+4. MEMORY: Updates AGENTS.md → Syncs context changes
+```
+
+### AGENTS.md Structure
+
+```markdown
+# Project: MyApp
+
+## Tech Stack
+- Frontend: React + TypeScript
+- Backend: Node.js + Express
+- Database: PostgreSQL
+
+## Decisions
+
+### DEC-2026-001: Use JWT for Authentication
+**Date:** 2026-03-10
+Chose JWT because stateless and scales horizontally.
+
+## Coding Conventions
+- Variables: camelCase
+- Classes: PascalCase
+- Files: kebab-case
+```
+
+---
+
 ## Customization
 
 ### Rename the Agent
@@ -586,5 +633,5 @@ Inspired by AI memory architecture patterns
 
 ---
 
-**Version**: 1.3.0
+**Version**: 1.4.0
 **Last Updated**: March 2026

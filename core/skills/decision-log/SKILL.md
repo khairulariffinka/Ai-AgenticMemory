@@ -147,6 +147,45 @@ Search DECISIONS.md for:
 
 ---
 
+## AGENTS.md Integration (IMPORTANT)
+
+After logging a major decision, **ALWAYS update AGENTS.md**:
+
+### When to Update AGENTS.md
+- Tech stack changes (database, framework, language)
+- Architecture decisions (API style, auth method)
+- Project conventions (naming, structure)
+- New integrations (external services)
+
+### How to Update AGENTS.md
+
+```markdown
+## Decisions
+
+### DEC-2026-001: Use JWT for Authentication
+**Date:** 2026-03-10
+**Status:** Active
+
+Decided to use JWT because it's stateless and scales horizontally.
+
+### DEC-2026-002: Use PostgreSQL Database
+**Date:** 2026-03-10
+**Status:** Active
+
+Chose PostgreSQL over MongoDB for relational data integrity.
+```
+
+### Workflow Update
+
+```
+1. **Detect** - Decision point identified
+2. **Log** - Record in DECISIONS.md
+3. **UPDATE** - Add to AGENTS.md under "Decisions" section
+4. **Confirm** - Tell user "Decision logged and AGENTS.md updated"
+```
+
+---
+
 ## Query Examples
 
 ### Search by Keyword
@@ -169,6 +208,7 @@ grep -i "database" DECISIONS.md
 4. **Link related** - Connect decisions to each other
 5. **Mark deprecated** - If a decision is superseded, update status
 6. **Keep it searchable** - Use clear titles and keywords
+7. **UPDATE AGENTS.md** - Always sync major decisions to AGENTS.md
 
 ---
 
@@ -177,8 +217,9 @@ grep -i "database" DECISIONS.md
 When implementing significant features:
 
 1. **Pause** - Before major implementation
-2. **Log** - Use decision-log to document the choice
-3. **Implement** - Proceed with full context
-4. **Reference** - Future decisions can query this
+2. **Log** - Record in DECISIONS.md
+3. **UPDATE AGENTS.md** - Add decision to AGENTS.md under "Decisions"
+4. **Implement** - Proceed with full context
+5. **Reference** - Future decisions can query this
 
 This creates a searchable knowledge base for the team.

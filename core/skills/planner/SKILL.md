@@ -168,6 +168,10 @@ Extract from the plan:
 [Auto-detect or use default structure]
 ```
 
+## Decisions
+- [Major decisions will be logged here by decision-log agent]
+- See DECISIONS.md for detailed decision history
+
 ## Coding Conventions
 - Variables: camelCase
 - Constants: UPPER_SNAKE_CASE
