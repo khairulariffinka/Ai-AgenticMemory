@@ -6,7 +6,7 @@ tools:
   read: true
   grep: true
   glob: true
-  bash: true
+  bash: false
 ---
 
 # Security Auditor Agent

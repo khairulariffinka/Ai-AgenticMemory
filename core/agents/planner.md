@@ -3,12 +3,12 @@ name: planner
 description: Advanced planner with hierarchical planning, risk assessment, and dynamic task management
 mode: subagent
 tools:
-  write: true
-  edit: true
+  write: false
+  edit: false
   read: true
   glob: true
   grep: true
-  bash: true
+  bash: false
 ---
 
 # Planner Agent

@@ -282,6 +282,283 @@ AgenticMemory:
   ✓ Complete! (Time: 45s)
 ```
 
+---
+
+## Detailed Usage Tutorial
+
+### Tutorial 1: Build a Complete Feature
+
+Step-by-step guide to building a full feature with authentication:
+
+#### Step 1: Activate AgenticMemory
+
+```
+[TAB] → agentic-memory
+```
+
+#### Step 2: Describe Your Requirement
+
+```
+build a user authentication system with:
+- User registration (email/password)
+- User login with JWT tokens
+- Password reset functionality
+- Protected routes example
+```
+
+#### Step 3: Agent Workflow
+
+AgenticMemory will:
+
+1. **Planner** - Creates hierarchical plan
+2. **Parallel Execution** - Coders work simultaneously:
+   - `backend-coder`: User model, API endpoints, JWT logic
+   - `frontend-coder`: Registration form, login form
+   - `test-coder`: Unit tests, integration tests
+3. **Parallel Audit** - Auditors check code:
+   - `security-auditor`: Vulnerability check
+   - `performance-auditor`: Query optimization
+   - `style-auditor`: Code conventions
+
+#### Step 4: Review & Commit
+
+AgenticMemory presents results and offers to commit:
+
+```
+✓ Files created: 8
+✓ Tests added: 12
+✓ Security: ✅ Passed
+✓ Performance: ✅ Passed
+
+Commit message:
+"feat(auth): implement JWT authentication system now? [y/N"
+
+Commit]:
+```
+
+---
+
+### Tutorial 2: Code Review
+
+#### Step 1: Activate in Review Mode
+
+```
+[TAB] → agentic-memory
+```
+
+#### Step 2: Specify Code to Review
+
+```
+review the auth module in src/auth/
+```
+
+#### Step 3: Review Results
+
+AgenticMemory runs parallel audits:
+
+```
+[AUDIT]
+├─ security-auditor: 🔴 3 issues found
+│   - SQL injection risk in login endpoint
+│   - Missing rate limiting
+│   - Hardcoded secret detected
+├─ performance-auditor: ✅ Passed
+└─ style-auditor: ⚠️  2 minor issues
+    - Inconsistent naming
+    - Missing JSDoc comments
+
+[REPORT]
+Risk Score: 7.5/10 (HIGH)
+Recommended: Fix security issues before merge
+```
+
+---
+
+### Tutorial 3: Quick Prototype
+
+For fast prototyping without audits:
+
+#### Step 1: Activate with Quick Mode
+
+```
+[TAB] → agentic-memory
+```
+
+#### Step 2: Describe Simple Task
+
+```
+quick, create a REST API endpoint for /api/users
+```
+
+#### Step 3: Fast Delivery
+
+```
+[MODE: quick] Skipping audits
+[EXECUTE]
+├─ backend-coder: Creating endpoint... ✓
+└─ test-coder: Basic tests... ✓
+
+✓ Complete! (Time: 23s)
+```
+
+---
+
+### Tutorial 4: Debug an Issue
+
+For troubleshooting with verbose logging:
+
+#### Step 1: Activate in Debug Mode
+
+```
+[TAB] → agentic-memory
+```
+
+#### Step 2: Describe the Problem
+
+```
+debug: User login returns 500 error after password reset
+Error occurs in src/auth/login.ts line 42
+```
+
+#### Step 3: Step-by-Step Investigation
+
+```
+[DEBUG MODE] Verbose logging enabled
+
+[STEP 1] Analyzing error context...
+- File: src/auth/login.ts:42
+- Error: Cannot read property 'compare' of undefined
+
+[STEP 2] Checking dependencies...
+- Found: bcrypt imported but password field empty
+
+[STEP 3] Root cause identified:
+- User model password field is optional
+- Login handler doesn't validate password existence
+
+[FIX] Proposed solution:
+- Add null check for password field
+- Return 400 if password not provided
+
+Apply fix? [y/N]:
+```
+
+---
+
+### Tutorial 5: Use Specific Subagents
+
+You can invoke specific subagents directly using @ mention:
+
+#### Direct Backend Task
+
+```
+@backend-coder, create a new API endpoint POST /api/products
+```
+
+#### Direct Security Audit
+
+```
+@security-auditor, scan the src/utils/ folder for vulnerabilities
+```
+
+#### Direct Git Operations
+
+```
+@git-manager, create a feature branch and commit pending changes
+```
+
+#### Direct Documentation
+
+```
+@docs-manager, generate API documentation for src/api/
+```
+
+---
+
+### Tutorial 6: Refactor Existing Code
+
+#### Step 1: Activate in Refactor Mode
+
+```
+[TAB] → agentic-memory
+```
+
+#### Step 2: Specify Refactoring Goal
+
+```
+refactor: Improve the data processing in src/services/parser.ts
+- Reduce complexity from O(n²) to O(n)
+- Add proper error handling
+- Improve readability
+```
+
+#### Step 3: Review Changes
+
+```
+[REFACTOR]
+├─ Analyzed: 3 functions, 150 lines
+├─ Identified: 2 nested loops
+├─ Optimized: Algorithm improved
+└─ Test coverage: Maintained
+
+[PREVIEW]
+src/services/parser.ts:45-67 - refactored
+src/services/parser.test.ts - updated
+
+Apply changes? [y/N]:
+```
+
+---
+
+### Subagent Reference
+
+| Subagent | Invoke | Tools | Best For |
+|----------|--------|-------|----------|
+| `planner` | Auto-invoked | read, glob, grep | Planning & brainstorming |
+| `backend-coder` | `@backend-coder` | write, edit, read, glob, grep, bash | APIs, databases |
+| `frontend-coder` | `@frontend-coder` | write, edit, read, glob, grep, bash | UI components |
+| `test-coder` | `@test-coder` | write, edit, read, glob, grep, bash | Unit & E2E tests |
+| `devops-coder` | `@devops-coder` | write, edit, read, glob, grep, bash | Docker, CI/CD |
+| `security-auditor` | `@security-auditor` | read, glob, grep | Security audit |
+| `performance-auditor` | `@performance-auditor` | read, glob, grep | Performance check |
+| `style-auditor` | `@style-auditor` | read, glob, grep | Code review |
+| `git-manager` | `@git-manager` | read, glob, grep, bash | Git operations |
+| `docs-manager` | `@docs-manager` | write, edit, read, glob, grep, bash | Documentation |
+| `memory` | `@memory` | write, edit, read, glob, grep, bash | Memory operations |
+
+---
+
+### Common Patterns
+
+#### Pattern 1: Full Development Cycle
+
+```
+1. [Plan] Describe feature → Planner creates plan
+2. [Build] Switch to dev mode → Coders execute
+3. [Audit] Automatic → Auditors check
+4. [Commit] Auto-commit → Git-manager commits
+```
+
+#### Pattern 2: Review Only
+
+```
+1. [Review] Switch to review mode
+2. [Audit] Run all auditors
+3. [Report] Get risk score
+4. [Fix] Optional: switch to dev mode to fix
+```
+
+#### Pattern 3: Quick Iteration
+
+```
+1. [Quick] Skip audits
+2. [Build] Fast delivery
+3. [Test] Manual verification
+4. [Iterate] Repeat if needed
+```
+
+---
+
 ## Multi-Language Support
 
 AgenticMemory detects and responds in your language:
@@ -307,5 +584,5 @@ Inspired by AI memory architecture patterns
 
 ---
 
-**Version**: 1.1.0
+**Version**: 1.2.0
 **Last Updated**: March 2026
