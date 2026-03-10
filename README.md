@@ -37,20 +37,20 @@ Press Tab to cycle through agents until you reach agentic-memory.
 
 #### Method B: @ Mention
 ```
-@agentic-memory, tolong bina login page
+@agentic-memory, build a login page for me
 ```
 
 ### 3. Give a Task
 
 ```bash
-bina satu login page untuk saya
+build a login page for me
 ```
 
 Or with specific mode:
 
 ```bash
-quick, bina test API untuk user
-review, audit code auth module ni
+quick, build a test API for user
+review, audit the auth module code
 ```
 
 ---
@@ -68,7 +68,7 @@ AgenticMemory is configured as a **primary agent** (`mode: all`), meaning it app
 Once selected, give your task directly:
 
 ```
-bina user authentication system
+build user authentication system
 ```
 
 ### @ Mention (Subagent)
@@ -76,7 +76,7 @@ bina user authentication system
 You can also invoke AgenticMemory from any other agent:
 
 ```
-@agentic-memory, tolong review code ni
+@agentic-memory, review this code
 ```
 
 ### Specify Mode
@@ -85,12 +85,12 @@ Include the mode in your task:
 
 | Mode | Example | Best For |
 |------|---------|----------|
-| **dev** | `bina user auth` | Full workflow + audits |
-| **quick** | `quick, buat api test` | Fast, skip audits |
-| **review** | `review, audit module ni` | Code review only |
-| **debug** | `debug, error ni` | Verbose troubleshooting |
-| **refactor** | `refactor, improve code ni` | Code improvement |
-| **test** | `test, buat test feature ni` | TDD workflow |
+| **dev** | `build user auth` | Full workflow + audits |
+| **quick** | `quick, build test API` | Fast, skip audits |
+| **review** | `review, audit this module` | Code review only |
+| **debug** | `debug, fix this error` | Verbose troubleshooting |
+| **refactor** | `refactor, improve this code` | Code improvement |
+| **test** | `test, write tests for this feature` | TDD workflow |
 
 ## Operating Modes
 
@@ -287,10 +287,7 @@ AgenticMemory:
 AgenticMemory detects and responds in your language:
 
 ```bash
-User (Malay): "agentic-memory, tolong buat login page"
-AgenticMemory: Baik! Saya akan buat login page untuk anda...
-
-User (English): "agentic-memory, build login page"
+User: "agentic-memory, build a login page"
 AgenticMemory: Sure! I'll build the login page for you...
 ```
 
