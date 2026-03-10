@@ -125,6 +125,7 @@ Include the mode in your task:
 |-------|-----------|
 | `planner` | Hierarchical planning, risk assessment |
 | `memory` | Semantic search, decision tracking |
+| `decision-log` | Design decisions with rationale |
 | `git-manager` | Git operations, commits |
 | `docs-manager` | Documentation generation |
 
@@ -525,6 +526,7 @@ Apply changes? [y/N]:
 | `git-manager` | `@git-manager` | read, glob, grep, bash | Git operations |
 | `docs-manager` | `@docs-manager` | write, edit, read, glob, grep, bash | Documentation |
 | `memory` | `@memory` | write, edit, read, glob, grep, bash | Memory operations |
+| `decision-log` | `@decision-log` | write, edit, read, glob, grep | Decision logging |
 
 ---
 
@@ -584,5 +586,5 @@ Inspired by AI memory architecture patterns
 
 ---
 
-**Version**: 1.2.0
+**Version**: 1.3.0
 **Last Updated**: March 2026

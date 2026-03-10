@@ -46,6 +46,7 @@ AgenticMemory is a multi-mode agent with parallel subagent execution, intelligen
 
 ### Memory Subagents
 - `memory` - Semantic search, decision tracking
+- `decision-log` - Design decision logging with rationale
 
 ### Utility Subagents
 - `git-manager` - Git operations, commits
