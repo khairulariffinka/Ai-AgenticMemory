@@ -25,26 +25,72 @@ AgenticMemory is an OpenCode-compliant AI agent framework featuring persistent m
 "Load install.md"
 ```
 
-### 2. Use
+### 2. Activate AgenticMemory
+
+After installation, activate AgenticMemory using one of these methods:
+
+#### Method A: Tab Key (Recommended)
+```
+[TAB] → Build → Plan → agentic-memory
+```
+Press Tab to cycle through agents until you reach agentic-memory.
+
+#### Method B: @ Mention
+```
+@agentic-memory, tolong bina login page
+```
+
+### 3. Give a Task
 
 ```bash
-User: "agentic-memory, build login feature"
-
-AgenticMemory: [LOADING] Hello! I am AgenticMemory...
-              [MEMORY] Loading context...
-              [PLANNER] Creating plan...
-              [EXECUTE] Running tasks...
-              ✓ Complete!
+bina satu login page untuk saya
 ```
 
-### 3. Customize (Optional)
+Or with specific mode:
+
+```bash
+quick, bina test API untuk user
+review, audit code auth module ni
+```
+
+---
+
+## How to Use
+
+### Tab Key (Primary Agent)
+
+AgenticMemory is configured as a **primary agent** (`mode: all`), meaning it appears in the Tab cycle:
 
 ```
-User: "Load rename.md"
-AI: "What name?"
-User: "nova"
-AI: ✅ Renamed to "nova"
+[TAB] cycles: Build → Plan → agentic-memory → Build...
 ```
+
+Once selected, give your task directly:
+
+```
+bina user authentication system
+```
+
+### @ Mention (Subagent)
+
+You can also invoke AgenticMemory from any other agent:
+
+```
+@agentic-memory, tolong review code ni
+```
+
+### Specify Mode
+
+Include the mode in your task:
+
+| Mode | Example | Best For |
+|------|---------|----------|
+| **dev** | `bina user auth` | Full workflow + audits |
+| **quick** | `quick, buat api test` | Fast, skip audits |
+| **review** | `review, audit module ni` | Code review only |
+| **debug** | `debug, error ni` | Verbose troubleshooting |
+| **refactor** | `refactor, improve code ni` | Code improvement |
+| **test** | `test, buat test feature ni` | TDD workflow |
 
 ## Operating Modes
 
@@ -131,8 +177,13 @@ Ai-AgenticMemory/
 3. **Restart OpenCode or reload configuration**
 
 4. **Test the installation**
-   ```
+   ```bash
    "agentic-memory, hello!"
+   ```
+
+   Or use Tab to select agentic-memory:
+   ```
+   [TAB] → agentic-memory → "hello!"
    ```
 
 ## Customization
@@ -158,7 +209,7 @@ AI: ✅ Renamed to "nova"
 
 ### Check for Updates
 
-```
+```bash
 "Load update.md"
 ```
 
@@ -179,7 +230,8 @@ The update protocol will:
 ## Usage Examples
 
 ### Build Feature
-```
+
+```bash
 User: "agentic-memory, build user authentication"
 
 AgenticMemory:
@@ -203,7 +255,8 @@ AgenticMemory:
 ```
 
 ### Code Review
-```
+
+```bash
 User: "agentic-memory, review the auth module"
 
 AgenticMemory:
@@ -219,7 +272,8 @@ AgenticMemory:
 ```
 
 ### Quick Prototype
-```
+
+```bash
 User: "agentic-memory, quick mode, build a test API"
 
 AgenticMemory:
@@ -256,5 +310,5 @@ Inspired by AI memory architecture patterns
 
 ---
 
-**Version**: 1.0.0
-**Last Updated**: March 2025
+**Version**: 1.1.0
+**Last Updated**: March 2026
