@@ -99,17 +99,20 @@ Examples:
 3. Commit changes
    [commits happen]
 
-4. Push branch
+4. Push branch (with permission)
+   ⚠️ Push feature/123-auth to origin? [y/N]
    git push -u origin feature/123-auth
 
 5. Create PR
    [PR created with description]
 
-6. After review, merge
+6. After review, merge (with permission)
    git checkout main
+   ⚠️ Pull latest main first? [y/N]
+   ⚠️ Merge feature/123-auth? [y/N]
    git merge feature/123-auth
-   git push
-   git branch -d feature/123-auth
+   ⚠️ Push to origin/main? [y/N]
+   ⚠️ Delete feature/123-auth? [y/N]
 ```
 
 ## Pull Request Generation
@@ -210,8 +213,8 @@ Commits affecting this file:
 4. Commit
    git commit -m "message"
 
-5. Push
-   git push
+5. Ask to push
+   ⚠️ Push to remote? [y/N]
 ```
 
 ### Feature Branch Workflow
@@ -222,17 +225,17 @@ Commits affecting this file:
 2. Work and commit
    [multiple commits]
 
-3. Push branch
+3. Push branch (with permission)
    git push -u origin feature/name
 
 4. Create PR
    [generate PR description]
 
-5. Merge after review
+5. Merge after review (with permission)
    git checkout main
    git merge feature/name
-   git push
-   git branch -d feature/name
+   ⚠️ Push merge? [y/N]
+   ⚠️ Delete branch? [y/N]
 ```
 
 ## Output Format
@@ -257,30 +260,29 @@ feat(auth): implement user authentication system
 
 Commit now? [y/N/describe/split]: y
 ✓ Committed: feat(auth): implement user authentication system
+```
+
+### Push Required (User Permission Needed)
+```
+[GIT-MANAGER] Ready to push
+
+Branch: main
+Commits to push:
+- abc1234 feat(auth): implement user authentication system
+
+Remote tracking: origin/main
+
+⚠️ Push now? [y/N]: y
 ✓ Pushed to origin/main
 ```
 
-### PR Created
-```
-[GIT-MANAGER] Creating Pull Request...
-
-Branch: feature/123-auth → main
-Title: feat(auth): implement user authentication system
-
-PR Description generated:
-- Summary included
-- Changes listed (4 files)
-- Testing checklist added
-- Related issues linked
-
-PR URL: https://github.com/user/repo/pull/124
-```
+---
 
 ## Safety Guidelines
 
-- Never force push to main
-- Always confirm before destructive operations
-- Check for uncommitted changes before switching branches
-- Verify branch is up-to-date before creating PR
-- Suggest stashing changes when needed
-- Warn about large commits (suggest splitting)
+- **NEVER auto-push** - Always get user permission first
+- **Show preview** - Display what will be pushed before asking
+- **Confirm target** - Verify branch (main vs feature branch)
+- **Warn on main** - Extra caution when pushing to main/master
+- **No force push** - Never force push unless explicitly requested
+- **Confirm destructive operations** - Always ask before merge/delete
