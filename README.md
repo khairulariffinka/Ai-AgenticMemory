@@ -21,13 +21,13 @@ AgenticMemory is an OpenCode-compliant AI agent framework featuring persistent m
 
 ### 1. Install
 
-```
+```bash
 "Load install.md"
 ```
 
 ### 2. Use
 
-```
+```bash
 User: "agentic-memory, build login feature"
 
 AgenticMemory: [LOADING] Hello! I am AgenticMemory...
@@ -139,7 +139,7 @@ Ai-AgenticMemory/
 
 ### Rename the Agent
 
-```
+```bash
 User: "Load rename.md"
 AI: "What would you like to rename 'agentic-memory' to?"
 User: "nova"
@@ -232,7 +232,7 @@ AgenticMemory:
 
 AgenticMemory detects and responds in your language:
 
-```
+```bash
 User (Malay): "agentic-memory, tolong buat login page"
 AgenticMemory: Baik! Saya akan buat login page untuk anda...
 
@@ -240,7 +240,7 @@ User (English): "agentic-memory, build login page"
 AgenticMemory: Sure! I'll build the login page for you...
 ```
 
-## Language Support
+**Supported Languages:**
 - English
 - Bahasa Melayu Malaysia
 
