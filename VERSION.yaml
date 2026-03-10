@@ -17,6 +17,7 @@ topics:
 core_agents:
   - memory
   - planner
+  - research
   - coder
   - auditor
   - security
@@ -33,6 +34,7 @@ core_agents:
 
 core_skills:
   - planner
+  - research
   - coder
   - auditor
   - memory

@@ -92,6 +92,243 @@ Include the mode in your task:
 | **refactor** | `refactor, improve this code` | Code improvement |
 | **test** | `test, write tests for this feature` | TDD workflow |
 
+---
+
+## Detailed Tutorial
+
+### Tutorial 1: Build a Complete Feature
+
+Follow this step-by-step guide to build a full feature using the structured workflow.
+
+#### Step 1: Activate AgenticMemory
+
+```
+[TAB] → agentic-memory
+```
+
+Or use @ mention:
+```
+@agentic-memory, I need to build a feature
+```
+
+#### Step 2: Start with Research
+
+AgenticMemory will automatically invoke the research agent to analyze your codebase:
+
+```
+[RESEARCH] Analyzing codebase...
+
+✓ Tech stack detected: Node.js + Express + PostgreSQL
+✓ Project structure found
+✓ Existing patterns identified:
+  - JWT authentication in src/auth/
+  - RESTful API conventions
+  - Prisma ORM
+
+Context gathered for planning.
+```
+
+#### Step 3: Plan the Implementation
+
+The planner creates a structured plan:
+
+```
+[PLANNER] Creating implementation plan...
+
+## Plan: User Authentication Feature
+
+### Tasks:
+- [ ] 1.1 Create User model with Prisma
+- [ ] 1.2 Create auth routes (register/login)
+- [ ] 1.3 Implement JWT middleware
+- [ ] 1.4 Create login form (frontend)
+- [ ] 1.5 Add unit tests
+
+### Parallel Groups:
+Group 1: User model + Auth routes
+Group 2: Frontend form + Tests
+```
+
+#### Step 4: Execute the Plan
+
+Coders implement each task:
+
+```
+[GROUP 1 - Parallel]
+├─ backend-coder: Creating User model... ✓
+└─ backend-coder: Creating auth routes... ✓
+
+[GROUP 2 - Parallel]
+├─ frontend-coder: Creating login form... ✓
+└─ test-coder: Writing unit tests... ✓
+```
+
+#### Step 5: Review and Commit
+
+Auditors verify the code:
+
+```
+[AUDIT - Parallel]
+├─ security-auditor: ✅ Passed
+├─ performance-auditor: ✅ Passed
+└─ style-auditor: ✅ Passed
+
+[GIT-MANAGER] Ready to commit
+
+Files changed: 5
+- src/models/User.ts
+- src/routes/auth.ts
+- src/middleware/auth.ts
+- src/views/login.vue
+- tests/auth.test.ts
+
+Commit message:
+feat(auth): implement JWT authentication
+
+Commit now? [y/N]: y
+✓ Committed!
+```
+
+---
+
+### Tutorial 2: Quick Feature Request
+
+For fast prototyping without full workflow:
+
+#### Step 1: Activate with Quick Mode
+
+```
+[TAB] → agentic-memory
+```
+
+#### Step 2: Specify Quick Mode
+
+```
+quick, create a simple API endpoint for /api/users
+```
+
+#### Step 3: Fast Implementation
+
+```
+[MODE: quick] Skipping audits
+
+[EXECUTE]
+└─ backend-coder: Creating endpoint... ✓
+
+✓ Complete! (Time: 15s)
+```
+
+---
+
+### Tutorial 3: Code Review
+
+Review existing code with audit agents:
+
+#### Step 1: Activate in Review Mode
+
+```
+[TAB] → agentic-memory
+```
+
+#### Step 2: Specify Review Task
+
+```
+review the src/auth/ module
+```
+
+#### Step 3: Detailed Audit
+
+```
+[MODE: review]
+
+[AUDIT - Parallel]
+├─ security-auditor: 🔴 2 issues found
+│   - SQL injection risk in login.ts:42
+│   - Missing rate limiting
+├─ performance-auditor: ✅ Passed
+└─ style-auditor: ⚠️ 1 minor issue
+    - Inconsistent naming
+
+[REPORT]
+Risk Score: 7.5/10 (HIGH)
+
+Recommended fixes:
+1. Use parameterized queries
+2. Add rate limiting middleware
+3. Standardize function naming
+```
+
+---
+
+### Tutorial 4: Debug an Issue
+
+For troubleshooting with verbose logging:
+
+#### Step 1: Activate in Debug Mode
+
+```
+[TAB] → agentic-memory
+```
+
+#### Step 2: Describe the Problem
+
+```
+debug: Login returns 500 error after password reset
+Error in src/auth/login.ts:42
+```
+
+#### Step 3: Step-by-Step Analysis
+
+```
+[DEBUG MODE] Verbose logging enabled
+
+[STEP 1] Analyzing error context...
+File: src/auth/login.ts:42
+Error: Cannot read property 'compare' of undefined
+
+[STEP 2] Checking dependencies...
+- bcrypt imported ✓
+- password field: undefined ❌
+
+[STEP 3] Root cause identified:
+- User model password field is optional
+- Login handler doesn't validate password exists
+
+[FIX] Proposed solution:
+- Add null check: if (!user.password)
+- Return 400: "Password not set"
+
+Apply fix? [y/N]:
+```
+
+---
+
+### Tutorial 5: Use Specific Subagents
+
+Invoke specific subagents directly:
+
+#### Research Phase
+```
+@research, analyze the codebase for payment processing patterns
+```
+
+#### Backend Task
+```
+@backend-coder, create a new API endpoint POST /api/products
+```
+
+#### Security Audit
+```
+@security-auditor, scan src/utils/ for vulnerabilities
+```
+
+#### Git Operations
+```
+@git-manager, create a feature branch and commit pending changes
+```
+
+---
+
 ## Operating Modes
 
 | Mode | Description | Best For |
@@ -124,6 +361,7 @@ Include the mode in your task:
 | Agent | Specialty |
 |-------|-----------|
 | `planner` | Hierarchical planning, risk assessment |
+| `research` | Codebase analysis and context gathering |
 | `memory` | Semantic search, decision tracking |
 | `decision-log` | Design decisions with rationale |
 | `git-manager` | Git operations, commits |
@@ -204,11 +442,24 @@ AGENTS.md is the official OpenCode file for project context:
 ### AgenticMemory Workflow
 
 ```
-1. PLANNER: Creates plan → Auto-creates AGENTS.md if not exists
-2. CODER: Reads AGENTS.md → Uses specified tech stack
-3. DECISION-LOG: Logs decisions → Updates AGENTS.md
-4. MEMORY: Updates AGENTS.md → Syncs context changes
+1. RESEARCH: Analyze codebase → Find patterns
+2. PLANNER: Creates plan → Auto-creates AGENTS.md if not exists
+3. CODER: Reads AGENTS.md → Uses specified tech stack
+4. DECISION-LOG: Logs decisions → Updates AGENTS.md
+5. MEMORY: Updates AGENTS.md → Syncs context changes
+6. AUDITOR: Verify → Check conventions
+7. GIT-MANAGER: Commit → Push (with permission)
 ```
+
+### Structured Development Phases
+
+| Phase | Agent | Purpose |
+|-------|-------|---------|
+| **Research** | `@research` | Analyze codebase, find patterns |
+| **Plan** | `planner` | Create implementation plan |
+| **Execute** | `coders` | Implement changes |
+| **Commit** | `git-manager` | Commit (with permission) |
+| **Review** | `auditors` | Verify implementation |
 
 ### AGENTS.md Structure
 

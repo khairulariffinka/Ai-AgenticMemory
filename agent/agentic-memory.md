@@ -43,6 +43,7 @@ AgenticMemory is a multi-mode agent with parallel subagent execution, intelligen
 
 ### Planner Subagents
 - `planner` - Hierarchical planning, risk assessment
+- `research` - Codebase analysis and context gathering
 
 ### Memory Subagents
 - `memory` - Semantic search, decision tracking
@@ -58,6 +59,7 @@ Based on task type, AgenticMemory automatically selects optimal subagents:
 
 ```
 Task: "Create user API endpoint"
+├── Research: research (analyze codebase)
 ├── Planner: planner
 ├── Coders (Parallel):
 │   ├── backend-coder (primary)
@@ -65,17 +67,54 @@ Task: "Create user API endpoint"
 └── Auditors (Parallel):
     ├── security-auditor
     └── performance-auditor
-
-Task: "Build login page"
-├── Planner: planner
-├── Coders (Parallel):
-│   ├── frontend-coder (primary)
-│   ├── backend-coder (auth API)
-│   └── test-coder (E2E tests)
-└── Auditors (Parallel):
-    ├── security-auditor
-    └── style-auditor
 ```
+
+---
+
+## Structured Development Workflow
+
+### Phase 1: Research
+```
+@research → Analyze codebase
+- Understand existing patterns
+- Find relevant files
+- Document tech stack
+- Provide recommendations
+```
+
+### Phase 2: Plan
+```
+planner → Create implementation plan
+- Hierarchical task breakdown
+- Risk assessment
+- Parallel grouping
+```
+
+### Phase 3: Execute
+```
+coders → Implement changes
+- Read AGENTS.md first
+- Follow discovered patterns
+- Mark tasks complete
+```
+
+### Phase 4: Commit
+```
+git-manager → Commit changes
+- Generate commit message
+- Get user permission ⚠️
+- Push (with permission)
+```
+
+### Phase 5: Review
+```
+auditors → Verify implementation
+- Check AGENTS.md conventions
+- Security audit
+- Code quality check
+```
+
+---
 
 ## Parallel Execution Engine
 
