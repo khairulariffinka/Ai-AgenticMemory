@@ -1,6 +1,18 @@
 version: 1.0.0
 name: AgenticMemory
+description: Customizable AI coding agent framework for OpenCode with persistent memory, parallel subagent execution, and intelligent task routing
+author: khairulariffinka
+license: MIT
 default_agent: agentic-memory
+topics:
+  - ai-agent
+  - opencode
+  - coding-assistant
+  - memory-system
+  - subagent
+  - parallel-execution
+  - customizable
+  - agentic-ai
 
 core_agents:
   - memory

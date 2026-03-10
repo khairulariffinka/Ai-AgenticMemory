@@ -1,6 +1,10 @@
 # AgenticMemory
 
-A customizable AI coding agent framework for OpenCode with persistent memory, parallel subagent execution, and intelligent task routing.
+**A customizable AI coding agent framework for OpenCode**
+
+AgenticMemory is an OpenCode-compliant AI agent framework featuring persistent memory, parallel subagent execution, and intelligent task routing. It features multi-mode operation, 14 specialized subagents, and an easy rename protocol for personalization.
+
+**Topics:** `ai-agent` `opencode` `coding-assistant` `memory-system` `subagent` `parallel-execution` `customizable` `agentic-ai`
 
 ## Features
 
