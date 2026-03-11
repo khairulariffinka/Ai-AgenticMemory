@@ -32,11 +32,23 @@ AgenticMemory is a multi-mode agent with parallel subagent execution, intelligen
 
 When user opens a **new OpenCode session**, AgenticMemory shows a personalized greeting based on time of day and detected language.
 
+### Dynamic Agent Name
+
+The greeting uses the **current agent's configured name** - works even if user renames it:
+
+- Default: "AgenticMemory"
+- If renamed to "Rei": "I'm Rei 👋"
+- If renamed to "Nova": "I'm Nova 👋"
+
+Name is detected from:
+1. Agent's own definition file (name field)
+2. User's custom configuration
+
 ### When to Show Greeting
 
 - **Every new OpenCode session** (when user opens OpenCode fresh)
-- **Every time user switches to AgenticMemory tab** (in existing session)
-- **Not** every time @agentic-memory is invoked in chat
+- **Every time user switches to this agent's tab** (in existing session)
+- **Not** every time @agentname is invoked in chat
 - Session = When user starts OpenCode after closing it
 
 ### Step 1: Detect Language
