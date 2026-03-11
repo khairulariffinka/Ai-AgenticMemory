@@ -1,4 +1,4 @@
-version: 0.0.1
+version: 0.0.2
 name: AgenticMemory
 description: Customizable AI coding agent framework for OpenCode with persistent memory, parallel subagent execution, and intelligent task routing
 author: khairulariffinka
@@ -31,6 +31,8 @@ core_agents:
   - git-manager
   - docs-manager
   - decision-log
+  - database-expert
+  - api-designer
 
 core_skills:
   - planner

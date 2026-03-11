@@ -4,6 +4,8 @@
 > 
 > This page is for **detailed guides** when you want to learn more.
 
+Comprehensive guide to using all 18 subagents in AgenticMemory.
+
 ---
 
 ## Table of Contents
@@ -18,7 +20,7 @@
 5. [🔴 Auditor Subagents](#-auditor-subagents) - Security, Performance, Style
 6. [🔵 Planner](#-planner) - Planning & task breakdown
 7. [🟣 Memory Subagents](#-memory-subagents) - Context & decisions
-8. [🟡 Utility Subagents](#-utility-subagents) - Git, Docs, Research
+8. [🟡 Utility Subagents](#-utility-subagents) - Git, Docs, Research, DB, Data, API
 
 ---
 
@@ -1595,6 +1597,124 @@ The `coder` is a universal code writer that works with ANY framework or language
 
 ---
 
+### 17. database-expert
+
+#### What It Does
+
+The `database-expert` specializes in database design, SQL optimization, schema architecture, and data modeling. It handles migrations, indexing, and performance tuning.
+
+**Specializations:**
+| Area | Technologies |
+|------|--------------|
+| **Relational** | MySQL, PostgreSQL, SQLite |
+| **NoSQL** | MongoDB, Redis |
+| **ORMs** | Prisma, Eloquent, TypeORM |
+| **Optimization** | Query plans, indexing, caching |
+
+#### When to Use
+
+- Designing new database schemas
+- Optimizing slow SQL queries
+- Creating migrations
+- Database performance issues
+- Schema reviews
+
+#### How to Use
+
+```
+@database-expert, design schema for e-commerce
+```
+
+```
+@database-expert, optimize this slow query
+```
+
+#### Example
+
+```
+@database-expert, create database for blog platform
+
+Database Expert:
+## Schema: Blog Platform
+
+### users
+- id (UUID, PK)
+- email (VARCHAR, UNIQUE)
+- name (VARCHAR)
+- created_at (TIMESTAMP)
+
+### posts
+- id (UUID, PK)
+- user_id (UUID, FK)
+- title (VARCHAR)
+- content (TEXT)
+- published (BOOLEAN)
+
+### comments
+- id (UUID, PK)
+- post_id (UUID, FK)
+- user_id (UUID, FK)
+- content (TEXT)
+```
+
+---
+
+### 18. api-designer
+
+#### What It Does
+
+The `api-designer` specializes in API architecture, REST/GraphQL design, OpenAPI specifications, and API best practices.
+
+**Specializations:**
+| Area | Technologies |
+|------|--------------|
+| **Styles** | REST, GraphQL, gRPC |
+| **Specs** | OpenAPI 3.0, Swagger |
+| **Auth** | OAuth 2.0, JWT, API Keys |
+| **Tools** | Postman, API Gateway |
+
+#### When to Use
+
+- Designing new APIs
+- Creating API specifications
+- REST vs GraphQL decisions
+- API documentation
+- API reviews
+
+#### How to Use
+
+```
+@api-designer, design API for products
+```
+
+```
+@api-designer, create OpenAPI spec
+```
+
+#### Example
+
+```
+@api-designer, design blog API
+
+API Designer:
+## Blog API Design
+
+### Endpoints
+GET    /posts          - List posts
+GET    /posts/{id}     - Get post
+POST   /posts          - Create post
+PUT    /posts/{id}     - Update post
+DELETE /posts/{id}     - Delete post
+
+### Response Format
+{
+  "data": [...],
+  "meta": { "total": 100, "page": 1 }
+}
+```
+
+---
+
 ## Summary Table
 
 | # | Subagent | Category | When to Use |
@@ -1615,6 +1735,8 @@ The `coder` is a universal code writer that works with ANY framework or language
 | 14 | git-manager | Utility | Git operations |
 | 15 | docs-manager | Utility | Documentation |
 | 16 | coder | Utility | General coding |
+| 17 | database-expert | Utility | Database design, SQL optimization |
+| 18 | api-designer | Utility | REST/GraphQL API design |
 
 ---
 
