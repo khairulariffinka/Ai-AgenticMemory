@@ -6,11 +6,11 @@ Comprehensive guide to using all 16 subagents in AgenticMemory.
 
 ## Table of Contents
 
-1. [Coder Subagents](#-coder-subagents)
-2. [Auditor Subagents](#-auditor-subagents)
-3. [Planner](#-planner)
-4. [Memory Subagents](#-memory-subagents)
-5. [Utility Subagents](#-utility-subagents)
+1. [🟢 Coder Subagents](#-coder-subagents)
+2. [🔴 Auditor Subagents](#-auditor-subagents)
+3. [🔵 Planner](#-planner)
+4. [🟣 Memory Subagents](#-memory-subagents)
+5. [🟡 Utility Subagents](#-utility-subagents)
 
 ---
 
@@ -456,8 +456,6 @@ Commit now? [y/N]
 ---
 
 ## 🔵 Planner
-
----
 
 ### 10. planner
 
