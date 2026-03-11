@@ -2,7 +2,7 @@
 
 **A customizable AI coding agent framework for OpenCode**
 
-AgenticMemory is an OpenCode-compliant AI agent framework featuring persistent memory, parallel subagent execution, and intelligent task routing. It features multi-mode operation, 14 specialized subagents, and an easy rename protocol for personalization.
+AgenticMemory is an OpenCode-compliant AI agent framework featuring persistent memory, parallel subagent execution, and intelligent task routing. It features multi-mode operation, 16 specialized subagents, and an easy rename protocol for personalization.
 
 **Topics:** `ai-agent` `opencode` `coding-assistant` `memory-system` `subagent` `parallel-execution` `customizable` `agentic-ai`
 
@@ -11,9 +11,11 @@ AgenticMemory is an OpenCode-compliant AI agent framework featuring persistent m
 | Feature | Description |
 |---------|-------------|
 | **Persistent Memory** | Tracks decisions, patterns, project context across sessions |
+| **Relationship Memory** | Remembers user preferences, language, interaction patterns |
 | **Multi-mode** | dev, quick, review, refactor, debug, test modes |
 | **Parallel Execution** | Subagents run simultaneously for faster delivery |
 | **Intelligent Routing** | Automatically selects optimal subagents for tasks |
+| **Adaptive Workflow** | Workflow adapts based on project context and user preferences |
 | **Customizable** | Rename the agent to your preferred name |
 | **Easy Updates** | Smart update preserves your customizations |
 
@@ -338,7 +340,149 @@ Invoke specific subagents directly:
 | **review** | Audit-only mode | Code reviews |
 | **refactor** | Focus on refactoring | Improving existing code |
 | **debug** | Verbose logging, step-by-step | Troubleshooting |
-| **test** | Test-first development | TDD workflow |
+| **test** | Test-first development | TDD workflow | 
+
+## Dynamic Agent Name
+
+AgenticMemory supports **dynamic naming** - you can rename the primary agent to your preferred name, and it will adapt its behavior accordingly.
+
+### How to Rename
+
+```
+User: "Load rename.md"
+AI: "What would you like to rename 'agentic-memory' to?"
+User: "nova"
+AI: ✅ Renamed to "nova"
+```
+
+### Valid Names
+- Lowercase letters and numbers
+- Hyphens between words
+- 1-64 characters
+- No spaces or special characters
+
+**Examples:** `nova`, `my-agent`, `code-helper-123`
+
+### How It Works
+
+The agent detects its name from:
+1. Agent definition file (`name` field)
+2. User's custom configuration
+
+When renamed, the agent:
+- Uses the new name in greetings
+- Preserves all customizations during updates
+- Maintains personality and instructions
+
+---
+
+## Parallel Execution
+
+AgenticMemory executes independent tasks **in parallel** for faster delivery.
+
+### How It Works
+
+```
+Group 1 (No dependencies - runs in parallel):
+├── backend-coder: Create User model
+└── frontend-coder: Create login form
+
+Group 2 (Depends on Group 1):
+├── backend-coder: Create auth API
+└── frontend-coder: Integrate API
+
+Group 3 (Final):
+├── test-coder: Write tests
+└── security-auditor: Security audit
+```
+
+### Execution Flow
+
+1. Planner identifies all tasks
+2. Tasks are grouped by dependencies
+3. Independent tasks run in parallel
+4. Wait for completion
+5. Execute next group
+6. Continue until complete
+
+---
+
+## Adaptive Workflow
+
+The workflow adapts based on context:
+
+| Factor | Adaptation |
+|--------|------------|
+| File size | Large files → thorough audit, small → quick |
+| File type | Config → skip audit, logic → full audit |
+| Project phase | Prototype → skip checks, production → full |
+| User history | User prefers X → adapt accordingly |
+| Error rate | Many failures → slow down, add debugging |
+
+---
+
+## Context-Aware Intelligence
+
+Before executing, AgenticMemory checks:
+
+1. **Project Knowledge**
+   - "Have I worked on this project before?"
+   - Load relevant decisions and patterns
+
+2. **Similar Tasks**
+   - "Did similar task in Project X"
+   - Suggest proven approaches
+
+3. **User Preferences**
+   - "User prefers detailed commits"
+   - "User skips certain audits"
+   - Adapt accordingly
+
+4. **Risk Assessment**
+   - High-risk task? Add extra audits
+   - Low-risk? Streamline process
+
+---
+
+## Error Recovery
+
+AgenticMemory handles failures gracefully:
+
+| Scenario | Recovery |
+|----------|----------|
+| Coder fails | Retry with more context, try alternative, escalate to user |
+| Auditor fails | Return to coder for fixes, add debug mode |
+| Parallel task fails | Continue independent tasks, re-queue failed, report partial success |
+
+---
+
+## Session Auto-Save
+
+Every session is automatically saved:
+
+- Tasks completed with subagent attribution
+- Decisions made during session
+- Patterns identified
+- Performance metrics
+- Cross-project learnings
+
+---
+
+## Skills System
+
+AgenticMemory uses a **skills** system for specialized capabilities:
+
+```
+core/skills/
+├── planner/      # Planning skill
+├── coder/        # Coding skill
+├── auditor/      # Audit skill
+├── memory/       # Memory skill
+├── security/    # Security skill
+└── research/     # Research skill
+```
+
+Skills are loaded dynamically based on task requirements. See [TUTORIALS.md](./TUTORIALS.md) for details.
 
 ## Subagents
 
@@ -353,19 +497,30 @@ Invoke specific subagents directly:
 ### Auditor Subagents
 | Agent | Specialty |
 |-------|-----------|
+| `security` | Full security scanner with bash access |
 | `security-auditor` | OWASP Top 10, secrets detection |
 | `performance-auditor` | Optimization, N+1 queries |
 | `style-auditor` | Code style, naming conventions |
+| `auditor` | General code review |
 
-### Utility Subagents
+### Planner & Research
 | Agent | Specialty |
 |-------|-----------|
 | `planner` | Hierarchical planning, risk assessment |
 | `research` | Codebase analysis and context gathering |
+
+### Memory & Decision
+| Agent | Specialty |
+|-------|-----------|
 | `memory` | Semantic search, decision tracking |
 | `decision-log` | Design decisions with rationale |
+
+### Utility Subagents
+| Agent | Specialty |
+|-------|-----------|
 | `git-manager` | Git operations, commits |
 | `docs-manager` | Documentation generation |
+| `coder` | Universal code writer |
 
 > 📚 **Want detailed tutorials?** See [TUTORIALS.md](./TUTORIALS.md) for complete guides on every subagent with examples and workflows.
 
@@ -509,6 +664,8 @@ AI: ✅ Renamed to "nova"
 
 ## Updating
 
+AgenticMemory uses **version tracking** to ensure smart updates. The current version is stored in `VERSION.yaml` and compared during updates.
+
 ### Check for Updates
 
 ```bash
@@ -516,9 +673,10 @@ AI: ✅ Renamed to "nova"
 ```
 
 The update protocol will:
+- Check current version vs latest version
 - Update core agents and skills
-- Preserve your customizations
-- Add new components
+- Preserve your customizations (especially for renamed agents)
+- Add new components automatically
 
 ### What Gets Updated
 
