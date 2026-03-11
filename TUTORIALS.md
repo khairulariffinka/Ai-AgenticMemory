@@ -1024,6 +1024,38 @@ Similar Past Work:
 - Session 2024-01-15: User authentication
 ```
 
+#### Context Compression (Save Tokens!)
+
+Reduce API costs by compressing old sessions:
+
+```
+@memory, compress              # Light - saves 30-50%
+@memory, compress medium       # Medium - saves 50-70%
+@memory, compress aggressive  # Aggressive - saves 70-80%
+```
+
+**What is Kept:**
+| Tier | Kept | Token Savings |
+|------|------|---------------|
+| Light | decisions, preferences, last 10 sessions | 30-50% |
+| Medium | decisions, preferences, last 5 sessions | 50-70% |
+| Aggressive | decisions, preferences only | 70-80% |
+
+**What is NEVER Compressed:**
+- ✅ decisions.md (design decisions)
+- ✅ preferences (user settings)
+- ✅ knowledge-graph.md (file relationships)
+
+**Example:**
+```
+User: @memory, compress
+
+Agent: ✓ Light compression complete
+       • Original: 2,500 lines → Compressed: 850 lines
+       • Saved: 66% tokens
+       • Kept: all decisions, preferences, recent sessions
+```
+
 ---
 
 ### 12. decision-log

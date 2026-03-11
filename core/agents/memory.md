@@ -216,21 +216,110 @@ class UserResource extends JsonResource {
 
 ## Context Compression
 
-### Auto-Summarize Old Sessions
+### Auto-Compression (Default)
 
-```markdown
-## Session: 2024-01-01
-**Status:** Compressed
-**Original Length:** 500 lines
-**Compressed Length:** 50 lines
+Sessions older than 30 days are automatically compressed to save tokens.
 
-**Summary:**
-- Implemented user authentication
-- Created 5 files
-- Key decision: JWT over sessions
-- Tests: 15 unit, 8 integration
+```
+✓ Auto-compressed: Session 2024-01-01
+  • Original: 500 lines → Compressed: 50 lines
+  • Kept: key decisions, file changes, outcomes
+```
 
-**Full Details:** [Link to full session log]
+---
+
+### Manual Compression Commands
+
+#### Light Compression (Default)
+```
+@memory, compress
+@memory, compress light
+```
+- Compress sessions older than 10 sessions
+- Keep: decisions, preferences, current project, recent sessions
+- **Saves: 30-50% tokens**
+
+#### Medium Compression
+```
+@memory, compress medium
+```
+- Compress all except last 5 sessions
+- Keep: decisions, preferences, session summaries
+- **Saves: 50-70% tokens**
+
+#### Aggressive Compression
+```
+@memory, compress aggressive
+@memory, compress full
+```
+- Keep only: decisions, preferences
+- Compress: all session history
+- **Saves: 70-80% tokens**
+
+#### Specific Range
+```
+@memory, compress sessions 1-10
+@memory, compress sessions older than 5
+```
+
+---
+
+### Tiered Compression Logic
+
+| Tier | Keep | Compress | Token Savings |
+|------|------|----------|---------------|
+| **Light** | decisions, preferences, current project, last 10 sessions | older sessions | 30-50% |
+| **Medium** | decisions, preferences, last 5 sessions | everything else | 50-70% |
+| **Aggressive** | decisions, preferences only | all history | 70-80% |
+
+---
+
+### What is NEVER Compressed
+
+These are always kept regardless of compression level:
+
+- ✅ `decisions.md` - Design decisions with rationale
+- ✅ `preferences` - User preferences (language, style)
+- ✅ `knowledge-graph.md` - File relationships
+
+---
+
+### Example Usage
+
+```
+User: @memory, compress
+
+Memory Agent:
+✓ Light compression complete
+
+Changes:
+• Compressed 8 sessions (older than 10)
+• Original: 2,500 lines → Compressed: 850 lines
+• Kept: 12 recent sessions, all decisions, preferences
+
+Token Savings: 66%
+
+Files affected:
+- history.md: compressed
+- decisions.md: unchanged ✓
+- preferences: unchanged ✓
+```
+
+---
+
+### Auto-Trigger Options
+
+| Trigger | Action |
+|---------|--------|
+| After 20 sessions | Auto light compression |
+| Token budget > 80% | Prompt user to compress |
+| New project start | Offer aggressive compression |
+
+You can enable auto-compression:
+
+```
+@memory, enable auto-compress
+@memory, disable auto-compress
 ```
 
 ## Workflow
