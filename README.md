@@ -367,12 +367,15 @@ Invoke specific subagents directly:
 | `git-manager` | Git operations, commits |
 | `docs-manager` | Documentation generation |
 
+> 📚 **Want detailed tutorials?** See [TUTORIALS.md](./TUTORIALS.md) for complete guides on every subagent with examples and workflows.
+
 ## Project Structure
 
 ```
 Ai-AgenticMemory/
 ├── VERSION.yaml           # Version tracking
 ├── README.md              # This file
+├── TUTORIALS.md          # Detailed subagent tutorials
 ├── install.md             # Installation wizard
 ├── rename.md              # Rename protocol
 ├── update.md              # Update protocol
