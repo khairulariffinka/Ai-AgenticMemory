@@ -4,7 +4,7 @@
 > 
 > This page is for **detailed guides** when you want to learn more.
 
-Comprehensive guide to using all 18 subagents in AgenticMemory.
+Comprehensive guide to using all 19 subagents in AgenticMemory.
 
 ---
 
@@ -1715,6 +1715,74 @@ DELETE /posts/{id}     - Delete post
 
 ---
 
+### 19. doc-scout
+
+#### What It Does
+
+The `doc-scout` automatically fetches live documentation for external libraries and packages. It ensures code is generated with current, working APIs instead of outdated information.
+
+**Key Features:**
+| Feature | Description |
+|---------|-------------|
+| **Live Docs** | Fetch from official sources |
+| **Version Check** | Latest stable version |
+| **API Reference** | Current methods and parameters |
+| **Breaking Changes** | Migration guides |
+| **TypeScript** | Type definitions included |
+
+#### When to Use
+
+- **Automatic**: When other agents detect external libraries
+- **Manual**: Get current docs for specific packages
+
+#### How It Works
+
+```
+User: Add Stripe payment to my app
+
+[Backend-coder detects Stripe]
+[→ doc-scout: Fetching live Stripe docs]
+
+doc-scout returns:
+- Latest: stripe@14.0.0
+- Current API: stripe.customers.create({...})
+- Auth: Bearer token
+- TypeScript: ✓
+
+[Backend-coder generates working code]
+✓ Complete with current Stripe API!
+```
+
+#### Example: Firebase Migration
+
+```
+User: Add Firebase to my app
+
+doc-scout:
+Firebase SDK Comparison:
+┌─────────┬─────────────────────────────────────┐
+│ Version │ Pattern                             │
+├─────────┼─────────────────────────────────────┤
+│ v9      │ import { getApps } from 'firebase/app' (modular)
+│ v8      │ import firebase from 'firebase/app' (compat)
+└─────────┴─────────────────────────────────────┘
+
+Recommendation: Use v9 (tree-shakeable, smaller bundle)
+
+Agent: Generating Firebase v9 code ✓
+```
+
+#### Supported Sources
+
+| Source | Examples |
+|--------|----------|
+| npm packages | React, Express, Lodash |
+| Frameworks | Next.js, Laravel, Django |
+| APIs | Stripe, Firebase, Twilio |
+| SDKs | AWS, Google Cloud |
+
+---
+
 ## Summary Table
 
 | # | Subagent | Category | When to Use |
@@ -1737,6 +1805,7 @@ DELETE /posts/{id}     - Delete post
 | 16 | coder | Utility | General coding |
 | 17 | database-expert | Utility | Database design, SQL optimization |
 | 18 | api-designer | Utility | REST/GraphQL API design |
+| 19 | doc-scout | Utility | Fetch live docs for external libraries |
 
 ---
 
