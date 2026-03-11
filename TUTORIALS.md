@@ -11,6 +11,445 @@ Comprehensive guide to using all 16 subagents in AgenticMemory.
 3. [🔵 Planner](#-planner)
 4. [🟣 Memory Subagents](#-memory-subagents)
 5. [🟡 Utility Subagents](#-utility-subagents)
+6. [🎯 Primary Agent](#-primary-agent)
+7. [⚡ Operating Modes](#-operating-modes)
+8. [💾 Relationship Memory](#-relationship-memory)
+
+---
+
+## 🎯 Primary Agent
+
+The **Primary Agent** (agentic-memory) is your main AI assistant that orchestrates all subagents. It handles complex tasks by automatically selecting and coordinating the right subagents.
+
+### What It Does
+
+- **Task Orchestration**: Automatically selects optimal subagents for your request
+- **Parallel Execution**: Runs independent tasks simultaneously
+- **Workflow Management**: Follows structured development phases
+- **Context Awareness**: Remembers project history and user preferences
+- **Adaptive Behavior**: Adjusts workflow based on context
+
+### How to Activate
+
+#### Method 1: Tab Key (Recommended)
+```
+[TAB] → Build → Plan → agentic-memory
+```
+
+Press Tab until you reach agentic-memory, then give your task.
+
+#### Method 2: @ Mention
+```
+@agentic-memory, build a login page for me
+```
+
+### Giving Tasks
+
+#### Simple Task
+```
+build a user authentication system
+```
+
+#### With Mode Specified
+```
+dev, build a user authentication system
+quick, create a simple API endpoint
+review, audit the auth module
+```
+
+#### Detailed Task
+```
+Build a REST API for managing blog posts with:
+- CRUD operations
+- JWT authentication
+- Pagination
+- Search functionality
+```
+
+### What Happens When You Give a Task
+
+```
+User: "build a login page"
+
+AgenticMemory:
+1. [CHECK] Loading project context...
+2. [RESEARCH] Analyzing codebase patterns
+3. [PLAN] Creating implementation plan
+4. [EXECUTE] Running subagents in parallel
+   - backend-coder: Create API endpoints
+   - frontend-coder: Create login form
+5. [AUDIT] Verifying code quality
+   - security-auditor: Security check
+   - style-auditor: Code style check
+6. [COMMIT] Ready to commit (with permission)
+
+✓ Complete!
+```
+
+### Direct Subagent Invocation
+
+You can invoke specific subagents directly:
+
+```
+@backend-coder, create a new API endpoint
+@frontend-coder, build a login form
+@security-auditor, scan for vulnerabilities
+@git-manager, commit my changes
+```
+
+### First-Time Greeting
+
+When you start a new session, AgenticMemory shows a personalized greeting:
+
+- **Time-based**: Morning/Afternoon/Evening/Night
+- **Language-aware**: English or Bahasa Melayu Malaysia
+- **Name-aware**: Uses your custom agent name if renamed
+
+---
+
+## ⚡ Operating Modes
+
+AgenticMemory supports **6 operating modes** that determine how tasks are processed.
+
+### Mode Overview
+
+| Mode | Description | When to Use |
+|------|-------------|-------------|
+| `dev` | Full workflow with all audits | Production code, important features |
+| `quick` | Skip audits, fast delivery | Prototyping, experiments |
+| `review` | Audit-only, no coding | Code reviews, security checks |
+| `refactor` | Focus on code improvement | Technical debt, optimizations |
+| `debug` | Verbose logging, step-by-step | Troubleshooting, error fixing |
+| `test` | Test-first approach | TDD workflow, test coverage |
+
+---
+
+### 1. Dev Mode (Default)
+
+Full development workflow with research, planning, coding, auditing, and git operations.
+
+#### Example
+```
+User: dev, build user authentication system
+
+AgenticMemory:
+[MODE: dev] Full workflow enabled
+
+1. [RESEARCH] Analyzing codebase...
+   ✓ Tech stack: Node.js + Express + PostgreSQL
+   
+2. [PLANNER] Creating plan...
+   - 5 tasks identified
+   - 2 parallel groups
+   
+3. [GROUP 1 - Parallel]
+   ├─ backend-coder: User model ✓
+   └─ backend-coder: Auth routes ✓
+   
+4. [GROUP 2 - Parallel]
+   ├─ frontend-coder: Login form ✓
+   └─ test-coder: Auth tests ✓
+   
+5. [AUDIT - Parallel]
+   ├─ security-auditor: ✅ Passed
+   ├─ performance-auditor: ✅ Passed
+   └─ style-auditor: ⚠️ 1 minor issue
+   
+6. [GIT-MANAGER] Commit ready?
+   - 8 files changed
+   - Message: feat(auth): implement JWT authentication
+   
+✓ Complete! (Time: 4m 23s)
+```
+
+#### Best For
+- Production code
+- Complex features
+- When full verification is needed
+
+---
+
+### 2. Quick Mode
+
+Fast delivery with minimal overhead. Skips audits and detailed planning.
+
+#### Example
+```
+User: quick, create a simple API endpoint
+
+AgenticMemory:
+[MODE: quick] Skipping audits
+
+[EXECUTE]
+└─ backend-coder: Creating endpoint... ✓
+
+✓ Complete! (Time: 12s)
+```
+
+#### Best For
+- Prototyping
+- Spike/experiments
+- Quick fixes
+- When you need speed over thoroughness
+
+---
+
+### 3. Review Mode
+
+Audit-only mode. Analyzes code without making changes.
+
+#### Example
+```
+User: review, audit the auth module
+
+AgenticMemory:
+[MODE: review] Audit only
+
+[AUDIT - Parallel]
+├─ security-auditor: 🔴 2 issues found
+│   - SQL injection risk in login.ts:42
+│   - Missing rate limiting
+├─ performance-auditor: ✅ Passed
+└─ style-auditor: ⚠️ 1 minor issue
+
+[REPORT]
+Risk Score: 7.5/10 (HIGH)
+
+Recommended fixes:
+1. Use parameterized queries
+2. Add rate limiting middleware
+```
+
+#### Best For
+- Code reviews
+- Pre-deployment checks
+- Security audits
+- When you need analysis without changes
+
+---
+
+### 4. Refactor Mode
+
+Focus on improving existing code without adding new features.
+
+#### Example
+```
+User: refactor, improve data processing in parser.ts
+
+AgenticMemory:
+[MODE: refactor] Focus on improvement
+
+[ANALYSIS]
+├─ Analyzed: 3 functions, 150 lines
+├─ Identified: 2 nested loops (O(n²))
+├─ Found: No error handling
+└─ Current complexity: High
+
+[PLAN]
+- [ ] Optimize algorithm to O(n)
+- [ ] Add error handling
+- [ ] Add unit tests
+- [ ] Verify functionality
+
+[EXECUTE]
+├─ Refactoring algorithm... ✓
+├─ Adding error handling... ✓
+├─ Updating tests... ✓
+
+[AUDIT]
+├─ security-auditor: ✅ Passed
+└─ style-auditor: ✅ Passed
+
+✓ Complete! (Time: 2m 15s)
+```
+
+#### Best For
+- Technical debt reduction
+- Code optimization
+- Improving readability
+- Reducing complexity
+
+---
+
+### 5. Debug Mode
+
+Verbose troubleshooting with step-by-step analysis.
+
+#### Example
+```
+User: debug, login returns 500 error after password reset
+
+AgenticMemory:
+[MODE: debug] Verbose logging enabled
+
+[STEP 1] Analyzing error context
+- File: src/auth/login.ts:42
+- Error: Cannot read property 'compare' of undefined
+- Request: POST /api/auth/login
+
+[STEP 2] Checking dependencies
+- bcrypt imported ✓
+- User model loaded ✓
+- password field: undefined ❌
+
+[STEP 3] Root cause identified
+- User has no password set (optional field)
+- Login handler doesn't validate password exists
+
+[STEP 4] Proposed solution
+- Add null check: if (!user.password)
+- Return 400: "Password not set"
+
+[FIX]
+Apply fix? [y/N]: y
+
+✓ Fixed!
+```
+
+#### Best For
+- Bug hunting
+- Error investigation
+- Root cause analysis
+- When you need detailed logging
+
+---
+
+### 6. Test Mode
+
+Test-first development. Creates tests before or alongside code.
+
+#### Example
+```
+User: test, write tests for user authentication
+
+AgenticMemory:
+[MODE: test] Test-first approach
+
+[PLANNER] Creating test plan...
+- 5 test scenarios identified
+
+[GROUP 1 - Parallel]
+├─ test-coder: Unit tests for User model ✓
+├─ test-coder: Unit tests for AuthService ✓
+
+[GROUP 2 - Parallel]
+├─ test-coder: Integration tests for login ✓
+├─ test-coder: Integration tests for registration ✓
+├─ test-coder: E2E test for auth flow ✓
+
+[REPORT]
+- Coverage: 85%
+- Tests: 24 passing
+- Edge cases covered
+
+✓ Complete! (Time: 3m 45s)
+```
+
+#### Best For
+- TDD workflow
+- Test coverage requirements
+- Quality assurance
+- When tests are priority
+
+---
+
+## 💾 Relationship Memory
+
+AgenticMemory learns and remembers your preferences, communication style, and interaction patterns across sessions.
+
+### What It Does
+
+- **Remembers preferences**: Language, response style, technical choices
+- **Learns communication style**: Formal/casual, detailed/brief
+- **Tracks favorite tools**: Frameworks, libraries, patterns
+- **Records feedback**: Corrections and preferences over time
+- **Adapts responses**: Based on learned preferences
+
+### How It Works
+
+```
+1. [OBSERVATION] AgenticMemory observes your patterns
+2. [LEARNING] Key preferences stored in relationship-memory.md
+3. [APPLICATION] Applies learned preferences in future interactions
+```
+
+### Usage
+
+#### Automatic Learning
+
+AgenticMemory automatically learns from your interactions:
+
+```
+User: "Saya nak responses yang ringkas please"
+AgenticMemory: ✓ [Records: Response Style = Brief]
+    Okay! Saya akan bagi responses yang lebih ringkas.
+```
+
+#### Viewing Profile
+
+```
+User: show profile
+
+AgenticMemory:
+# User Profile: Developer
+
+## Communication
+- Language: English
+- Response Style: Brief
+- Tone: Casual
+
+## Technical Preferences
+- Favorite Framework: React
+- Preferred Language: TypeScript
+
+## Work Style
+- Commit: Detailed
+- Testing: After-consideration
+```
+
+#### Manual Preferences
+
+```
+User: I prefer Vue over React
+
+AgenticMemory: ✓ [Updates: Preferred Framework = Vue]
+    Got it! I'll suggest Vue solutions going forward.
+```
+
+### Memory Structure
+
+```markdown
+# User Profile
+
+## Communication Preferences
+- Language: English
+- Response Style: Brief
+- Tone: Casual
+
+## Technical Preferences
+- Favorite Framework: React
+- Preferred Language: TypeScript
+
+## Work Style
+- Session Duration: Medium
+- Commit Preference: Detailed
+- Testing: After-consideration
+
+## Feedback Log
+- 2026-03-11: Prefers Vue over React
+- 2026-03-10: Likes detailed commit messages
+
+## Topics of Interest
+- AI Agents
+- OpenCode
+- TypeScript
+```
+
+### Integration
+
+- **Auto-load**: Loads at session start
+- **Auto-update**: Saves new learnings after each session
+- **Persistence**: All preferences saved to `relationship-memory.md`
 
 ---
 
