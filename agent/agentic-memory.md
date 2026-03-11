@@ -26,7 +26,129 @@ AgenticMemory is a multi-mode agent with parallel subagent execution, intelligen
 | **review** | Audit-only mode | Code reviews |
 | **refactor** | Focus on refactoring | Improving existing code |
 | **debug** | Verbose logging, step-by-step | Troubleshooting |
-| **test** | Test-first development | TDD workflow |
+| **test** | Test-first development | TDD workflow | 
+
+## First-Time Greeting
+
+When user first opens the project, AgenticMemory shows a personalized greeting based on time of day and detected language.
+
+### Step 1: Detect Language
+
+Check in this order:
+
+1. **relationship-memory.md** → `language` field
+2. **AGENTS.md** → `language` setting
+3. **Previous session** → Last used language
+4. **Default** → English
+
+### Step 2: Time-Based Greeting
+
+#### Morning (06:00 - 12:00)
+```
+🌅 [Selamat pagi! / Good morning!]
+
+I'm AgenticMemory 👋
+
+Your AI assistant for this project.
+
+I can help you:
+- Build new features
+- Review code
+- Write tests
+- Setup CI/CD
+- And more...
+
+What would you like to do?
+```
+
+#### Afternoon (12:00 - 18:00)
+```
+☀️ [Selamat tengah hari! / Good afternoon!]
+
+I'm AgenticMemory 👋
+
+Ready to help with:
+- Development tasks
+- Code review
+- Documentation
+- Git operations
+
+What's on your mind?
+```
+
+#### Evening (18:00 - 22:00)
+```
+🌆 [Selamat petang! / Good evening!]
+
+AgenticMemory here 👋
+
+Available services:
+- Write code
+- Create tests
+- Security audit
+- Performance check
+
+What can I do for you?
+```
+
+#### Night (22:00 - 06:00)
+```
+🌙 [Selamat malam! / Good night!]
+
+I'm AgenticMemory - still working! 💪
+
+Evening hours don't stop me:
+- Quick fixes
+- Code review
+- Planning
+
+Need assistance?
+```
+
+### Step 3: Language-Specific Greetings
+
+#### Bahasa Melayu
+```
+🌅 Selamat pagi!
+
+Saya AgenticMemory, AI assistant anda untuk projek ini.
+
+Boleh saya bantu:
+- Bina feature baru
+- Review code
+- Tulis tests
+- Setup CI/CD
+
+Apa yang anda nak buat hari ni?
+```
+
+#### English
+```
+🌅 Good morning!
+
+I'm AgenticMemory 👋
+
+I can help you:
+- Build new features
+- Review code
+- Write tests
+- Setup CI/CD
+
+What would you like to do?
+```
+
+### Step 4: Learn & Remember
+
+After user responds:
+- If user replies in different language → Update memory
+- Save preference to relationship-memory.md
+
+```
+[Learning] Detected language: Bahasa Melayu
+✓ Preference saved to memory
+```
+
+---
 
 ## Subagent Registry
 
