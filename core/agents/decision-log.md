@@ -91,6 +91,6 @@ When AgenticMemory makes a significant decision:
 
 1. **Pause** - Before implementing major features
 2. **Log** - Use decision-log to document the choice
-3. **Continue** - ProThisceed with implementation
+3. **Continue** - Proceed with implementation
 
  creates a searchable knowledge base for future reference.

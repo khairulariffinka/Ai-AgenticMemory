@@ -11,6 +11,9 @@ tools:
 
 # Security Agent
 
+> Note: This is the full security agent with bash access.
+> Use `security-auditor.md` for read-only security audits without bash.
+
 Dedicated security vulnerability scanner for comprehensive security audits.
 
 ## Capabilities

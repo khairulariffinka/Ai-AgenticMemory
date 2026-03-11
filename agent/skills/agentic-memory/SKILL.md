@@ -46,6 +46,9 @@ Task contains "deploy" or "Docker" → devops-coder
 Task contains "security" → security-auditor
 Task contains "slow" or "optimize" → performance-auditor
 Task contains "style" or "lint" → style-auditor
+Task contains "decision" or "rationale" → decision-log
+Task contains "document" or "docs" → docs-manager
+Task contains "commit" or "branch" → git-manager
 ```
 
 ### Parallel Groups
@@ -68,11 +71,13 @@ Group 2 (Depends on Group 1):
 
 ```
 1. [MEMORY] Load project context
-2. [PLANNER] Create hierarchical plan
-3. [EXECUTE] Run tasks in parallel groups
-4. [AUDIT] Run audits in parallel
-5. [COMMIT] Generate and commit changes
-6. [MEMORY] Save session and decisions
+2. [DECISION-LOG] Check previous decisions
+3. [PLANNER] Create hierarchical plan
+4. [DECISION-LOG] Log key decisions
+5. [EXECUTE] Run tasks in parallel groups
+6. [AUDIT] Run audits in parallel
+7. [COMMIT] Generate and commit changes
+8. [MEMORY] Save session and decisions
 ```
 
 ### Quick Flow
