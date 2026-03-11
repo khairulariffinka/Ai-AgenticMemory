@@ -604,60 +604,6 @@ AgenticMemory:
 
 ---
 
-## Detailed Usage Tutorial
-
-### Tutorial 1: Build a Complete Feature
-
-Step-by-step guide to building a full feature with authentication:
-
-#### Step 1: Activate AgenticMemory
-
-```
-[TAB] → agentic-memory
-```
-
-#### Step 2: Describe Your Requirement
-
-```
-build a user authentication system with:
-- User registration (email/password)
-- User login with JWT tokens
-- Password reset functionality
-- Protected routes example
-```
-
-#### Step 3: Agent Workflow
-
-AgenticMemory will:
-
-1. **Planner** - Creates hierarchical plan
-2. **Parallel Execution** - Coders work simultaneously:
-   - `backend-coder`: User model, API endpoints, JWT logic
-   - `frontend-coder`: Registration form, login form
-   - `test-coder`: Unit tests, integration tests
-3. **Parallel Audit** - Auditors check code:
-   - `security-auditor`: Vulnerability check
-   - `performance-auditor`: Query optimization
-   - `style-auditor`: Code conventions
-
-#### Step 4: Review & Commit
-
-AgenticMemory presents results and offers to commit:
-
-```
-✓ Files created: 8
-✓ Tests added: 12
-✓ Security: ✅ Passed
-✓ Performance: ✅ Passed
-
-Commit message:
-"feat(auth): implement JWT authentication system now? [y/N"
-
-Commit]:
-```
-
----
-
 ### Tutorial 2: Code Review
 
 #### Step 1: Activate in Review Mode
@@ -905,5 +851,5 @@ Inspired by AI memory architecture patterns
 
 ---
 
-**Version**: 1.5.0
+**Version**: 0.0.1
 **Last Updated**: March 2026
