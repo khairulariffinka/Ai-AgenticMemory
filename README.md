@@ -523,8 +523,29 @@ The update protocol will:
 |-----------|-----------------|
 | Core agents | Always updated |
 | Core skills | Always updated |
-| Primary agent | Preserved if renamed |
+| Primary agent (default name) | Full overwrite |
+| Primary agent (renamed) | Diff/merge - preserves name & customizations |
 | User customizations | Never overwritten |
+
+### Update for Renamed Agents
+
+When you rename your primary agent (e.g., to "nova" or "my-agent"), updates are applied using **diff-based merge**:
+
+- **Preserved**: Your custom agent name
+- **Preserved**: Your custom instructions and personalizations
+- **Updated**: New features and improvements from the latest version
+
+```
+Example: You renamed to "nova"
+
+Update applied:
++ NEW: relationship-memory feature
++ UPDATED: parallel execution enhancements
+~ PRESERVED: Your custom name "nova"
+~ PRESERVED: Your custom instructions
+```
+
+This ensures you always get the latest updates while keeping your personal agent identity.
 
 ## Usage Examples
 
@@ -884,5 +905,5 @@ Inspired by AI memory architecture patterns
 
 ---
 
-**Version**: 1.4.0
+**Version**: 1.5.0
 **Last Updated**: March 2026

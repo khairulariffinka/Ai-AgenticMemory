@@ -31,7 +31,7 @@ Check: ~/.config/opencode/agents/
 
 If agent is named anything other than "agentic-memory":
   - User has renamed it
-  - DO NOT overwrite
+  - Track the custom name for later merge
   - Note: "Custom agent detected: {name}"
 
 If agent file has been modified:
@@ -91,12 +91,26 @@ For each NEW folder in core/skills/:
     Log: "Added new skill: {name}"
 ```
 
-### Step 6: Update Primary Agent (if not customized)
+### Step 6: Update Primary Agent
 
-```bash
-# Only if user hasn't renamed or customized:
+Handle both default and renamed primary agents:
+
+```
+# If user has renamed their agent (e.g., "nova"):
+# 1. Apply diff-based merge to update their agent with new features
+# 2. Preserve user's custom name, instructions, and customizations
+# 3. Merge strategy:
+#    - Add new sections from updated agentic-memory.md
+#    - Update existing sections that haven't been customized
+#    - Preserve user-specific customizations (name, custom instructions, etc.)
+# 4. Prompt user: "Update your renamed agent '{name}' with latest features? [Y/n]"
+
+# If agent is still named "agentic-memory" (not renamed):
 cp agent/agentic-memory.md ~/.config/opencode/agents/
 cp -r agent/skills/agentic-memory ~/.config/opencode/skills/
+
+# If no primary agent exists at all:
+#  - Copy the default primary agent
 ```
 
 ### Step 7: Update Version Marker
@@ -115,9 +129,7 @@ echo "1.0.0" > ~/.config/opencode/.agentic-memory-version
 Updated:
 - X Core agents
 - X Core skills
-
-Preserved:
-- {custom-agent-name} (your customized agent)
+- Primary agent "{name}" (diff/merge applied - your custom name preserved)
 
 Added:
 - {new-agent} (new subagent)
@@ -138,14 +150,14 @@ User has default "agentic-memory"
 ```
 User renamed to "nova"
 → Core agents/skills updated
-→ "nova" preserved (not overwritten)
+→ "nova" updated via diff/merge (preserves name, gets new features)
 ```
 
 ### Scenario 3: User Modified Agent
 ```
 User modified agentic-memory.md
 → Core agents/skills updated
-→ Modified agent preserved with warning
+→ Modified agent updated via diff/merge (preserves customizations)
 ```
 
 ### Scenario 4: Fresh Install
@@ -166,7 +178,7 @@ Latest version: 1.0.0
 Update available! ✓
 
 Analyzing your setup...
-- Custom agent detected: "nova" (will preserve)
+- Primary agent: "nova" (renamed by user)
 - Core agents: 14 (will update)
 - Core skills: 5 (will update)
 - New components: 2 agents, 1 skill
@@ -178,15 +190,38 @@ Updating...
   ├─ core/skills/* → ✓
   ├─ New: api-coder.md → ✓
   ├─ New: api-auditor.md → ✓
-  └─ New: api skill → ✓
+  ├─ New: api skill → ✓
+  └─ Primary agent "nova": diff/merge → ✓
 
 ✅ Update Complete!
 
 Updated: 14 agents, 5 skills
+Primary agent "nova": Updated with new features (your custom name preserved)
 Added: 2 agents (api-coder, api-auditor), 1 skill (api)
-Preserved: nova (your customized agent)
 
 Version: 0.9.0 → 1.0.0
+```
+
+### Diff-Based Merge for Renamed Agents
+
+When user has renamed their primary agent, the AI will:
+
+1. **Read both files**: user's agent + new agentic-memory.md
+2. **Identify changes**: What sections are new/updated in the new version
+3. **Merge intelligently**:
+   - Add entirely new sections from the update
+   - Update core functionality sections (if user hasn't heavily modified)
+   - Preserve user's custom sections, name, and personal instructions
+4. **Prompt for confirmation**: Show what will change before applying
+
+```
+Merge Preview for "nova":
++ NEW: relationship-memory feature (added)
++ UPDATED: parallel subagent execution (enhanced)
+~ PRESERVED: Your custom instructions (unchanged)
+~ PRESERVED: Agent name "nova" (unchanged)
+
+Apply these changes? [Y/n]
 ```
 
 ## Rollback
@@ -205,5 +240,5 @@ AI: Restoring previous version...
 
 - Always backup before major updates
 - Core components are always updated (users shouldn't modify)
-- User customizations are always preserved
+- Renamed primary agents: Diff-based merge applied (preserves name + customizations, adds new features)
 - Version tracking enables smart updates
