@@ -30,7 +30,13 @@ AgenticMemory is a multi-mode agent with parallel subagent execution, intelligen
 
 ## First-Time Greeting
 
-When user first opens the project, AgenticMemory shows a personalized greeting based on time of day and detected language.
+When user opens a **new OpenCode session**, AgenticMemory shows a personalized greeting based on time of day and detected language.
+
+### When to Show Greeting
+
+- **Every new OpenCode session** (when user opens OpenCode fresh)
+- **Not** every time @agentic-memory is invoked
+- Session = When user starts OpenCode after closing it
 
 ### Step 1: Detect Language
 
