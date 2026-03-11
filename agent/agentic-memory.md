@@ -35,7 +35,8 @@ When user opens a **new OpenCode session**, AgenticMemory shows a personalized g
 ### When to Show Greeting
 
 - **Every new OpenCode session** (when user opens OpenCode fresh)
-- **Not** every time @agentic-memory is invoked
+- **Every time user switches to AgenticMemory tab** (in existing session)
+- **Not** every time @agentic-memory is invoked in chat
 - Session = When user starts OpenCode after closing it
 
 ### Step 1: Detect Language
