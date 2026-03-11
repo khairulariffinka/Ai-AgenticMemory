@@ -709,46 +709,82 @@ The `research` agent analyzes the codebase to understand existing patterns, tech
 
 #### What It Does
 
-The `git-manager` specializes in Git operations including commits, branches, pull requests, and conflict resolution. It handles version control professionally.
+The `git-manager` specializes in Git operations including commits, branches, pull requests, and conflict resolution. It handles version control professionally with smart grouping and safety checks.
 
 **Capabilities:**
 | Operation | Description |
 |-----------|-------------|
-| **Commit** | Smart commit message generation |
-| **Branch** | Feature branch creation |
-| **PR** | Pull request creation |
-| **Merge** | Conflict detection and resolution |
-| **History** | Log analysis |
-| **Sync** | Fetch, pull, push |
+| **Commit** | Smart commit message generation with grouping |
+| **Branch** | Feature branch creation with naming conventions |
+| **PR** | Pull request creation with auto-description |
+| **Merge** | Conflict detection and resolution suggestions |
+| **History** | Log analysis, change tracking |
+| **Sync** | Fetch, pull, push with permission |
 
-**Important:** NEVER auto-push - always gets user permission first!
+**⚠️ Important: NEVER auto-push** - Always gets user permission first!
+
+---
 
 #### When to Use
 
-- Creating commits
-- Managing branches
+- Creating commits with smart message generation
+- Managing branches (create, switch, delete)
 - Creating pull requests
 - Resolving merge conflicts
 - Analyzing git history
+- Syncing with remote
+
+---
 
 #### How to Use
 
+**Basic Commands:**
 ```
 @git-manager, commit the new authentication feature
-```
-
-```
 @git-manager, create a feature branch for the payment module
+@git-manager, create a pull request
+@git-manager, show me the recent commits
 ```
 
-#### Example Output
-
+**Advanced Commands:**
 ```
-Changes to commit:
-1. app/Http/Controllers/AuthController.php
-2. app/Services/AuthService.php
-3. tests/Feature/AuthTest.php
+@git-manager, commit all changes as one
+@git-manager, split into separate commits by feature
+@git-manager, resolve merge conflict in UserController.php
+@git-manager, push to remote
+@git-manager, create bugfix branch for login issue
+```
 
+---
+
+#### Commit Workflow
+
+**Step 1: Detect Changes**
+```
+git-manager scans the repository and lists all changes:
+
+Changes detected:
+1. app/Models/User.php (modified)
+2. app/Http/Controllers/AuthController.php (modified)
+3. resources/views/auth/login.blade.php (new)
+4. tests/Feature/AuthTest.php (new)
+```
+
+**Step 2: Smart Grouping**
+```
+Analyzing changes...
+
+✓ Grouped by feature: Authentication
+
+Files:
+- Model: User.php
+- Controller: AuthController.php
+- View: login.blade.php
+- Test: AuthTest.php
+```
+
+**Step 3: Generate Message**
+```
 Suggested commit message:
 feat(auth): implement JWT authentication
 
@@ -756,9 +792,243 @@ feat(auth): implement JWT authentication
 - Create auth middleware
 - Add refresh token rotation
 
-Commit now? [y/N]: y
-✓ Committed!
+Format: Conventional Commits
+Type: feat (new feature)
+Scope: auth (authentication module)
 ```
+
+**Step 4: User Confirmation**
+```
+Commit now? [y/N]: y
+
+✓ Committed!
+Hash: 2f83dc8
+Message: feat(auth): implement JWT authentication
+Files: 4 changed
+```
+
+---
+
+#### Branch Management
+
+**Create Feature Branch:**
+```
+@git-manager, create feature branch for user dashboard
+
+Creating branch...
+Name: feature/user-dashboard
+Base: main
+✓ Branch created and checked out
+```
+
+**Create Bugfix Branch:**
+```
+@git-manager, create bugfix for login error
+
+Creating branch...
+Name: bugfix/login-error
+Base: main
+✓ Branch created and checked out
+```
+
+**Branch Naming Conventions:**
+| Type | Format | Example |
+|------|--------|---------|
+| Feature | `feature/<id>-<description>` | `feature/123-user-auth` |
+| Bugfix | `bugfix/<id>-<description>` | `bugfix/456-login-error` |
+| Hotfix | `hotfix/<id>-<description>` | `hotfix/999-security-patch` |
+| Refactor | `refactor/<id>-<description>` | `refactor/789-api-cleanup` |
+
+---
+
+#### Pull Request Workflow
+
+**Create PR:**
+```
+@git-manager, create pull request for feature branch
+
+Analyzing branch: feature/user-dashboard
+Comparing with: main
+
+Changes:
+- 5 new files
+- 12 modified files
+- 3 deleted files
+
+Suggested PR title: feat: implement user dashboard
+
+Description template:
+## Summary
+- User dashboard with analytics
+- Profile management
+- Activity log
+
+## Changes
+- Add DashboardController
+- Add DashboardService
+- Add Vue components
+
+## Testing
+- Unit tests added
+- Integration tests passing
+
+✓ PR created: #45
+URL: https://github.com/user/repo/pull/45
+```
+
+---
+
+#### Merge Conflict Resolution
+
+**When Conflict Detected:**
+```
+@git-manager, merge main into feature/user-dashboard
+
+Conflict detected!
+
+Files with conflicts:
+1. app/Http/Controllers/UserController.php
+2. app/Services/UserService.php
+
+Showing conflicts:
+---
+<<<<<<< HEAD
+    public function index() {
+        return view('dashboard');
+=======
+    public function index() {
+        return response()->json(['data' => $this->service->get()]);
+>>>>>>> main
+---
+
+Options:
+1. Keep our changes (HEAD)
+2. Keep their changes (main)
+3. Manual merge
+
+Which option? [1/2/3]:
+```
+
+**Resolution Suggestion:**
+```
+Conflict: UserController.php:45
+
+Both branches modified the same method differently.
+- HEAD: Returns view for web
+- main: Returns JSON API response
+
+Suggested resolution: 
+Since this is an API-first app, keep main's changes.
+The web route should be added separately.
+
+Apply suggestion? [y/N]:
+```
+
+---
+
+#### History & Analysis
+
+**View Recent Commits:**
+```
+@git-manager, show recent commits
+
+Recent commits (last 10):
+│ Hash │ Author │ Message │ Date │
+│-----|--------|---------|------│
+│ 2f83dc8 │ khairul │ feat: add auth │ 2026-03-11 │
+│ 29d32b6 │ khairul │ feat: add diff │ 2026-03-10 │
+│ ceb1fe2 │ khairul │ feat: research │ 2026-03-09 │
+```
+
+**View File History:**
+```
+@git-manager, show history for UserController.php
+
+History: app/Http/Controllers/UserController.php
+│ Commit │ Author │ Change │
+|--------|--------|--------│
+│ 2f83dc8 │ khairul │ Add update method │
+│ 29d32b6 │ khairul │ Refactor validation │
+│ a1b2c3d │ khairul │ Initial commit │
+```
+
+---
+
+#### Safety Features
+
+| Feature | Description |
+|---------|-------------|
+| **No Auto-Push** | Always asks permission |
+| **Preview Changes** | Shows what will be pushed |
+| **Branch Verification** | Confirms target branch |
+| **No Force Push** | Unless explicitly requested |
+| **Conflict Warning** | Alerts before merge |
+| **Backup Reminder** | Suggests backup before risky ops |
+
+---
+
+#### Example Complete Workflow
+
+```
+User: @git-manager, commit my auth changes
+
+git-manager:
+1. Scanning changes...
+   Found: 6 files changed
+
+2. Smart grouping:
+   ├─ Authentication (4 files)
+   └─ Tests (2 files)
+
+3. Options:
+   [1] Commit all as one
+   [2] Split: auth + tests
+   [3] Review first
+
+User: 1
+
+4. Generating message...
+   feat(auth): implement JWT authentication
+
+   - Add JWT token generation
+   - Create auth middleware
+   - Add refresh token rotation
+
+5. Commit now? [y/N]: y
+
+✓ Committed!
+   Hash: 2f83dc8
+   Files: 6 changed
+
+6. Push to remote? [y/N]: y
+
+✓ Pushed to origin/main
+```
+
+---
+
+#### Error Handling
+
+| Error | Solution |
+|-------|----------|
+| Nothing to commit | Tell user "No changes to commit" |
+| Merge conflict | Offer resolution options |
+| Push rejected | Show reason, offer force option |
+| Branch exists | Ask: overwrite or use existing? |
+| No remote | Tell user to add remote first |
+
+---
+
+#### Integration with Other Agents
+
+git-manager works with:
+
+| Agent | Workflow |
+|-------|----------|
+| **auditor** | After audit passes → commit |
+| **planner** | Mark tasks complete → commit |
+| **memory** | Log session → commit |
+| **coder** | Code complete → notify for commit |
 
 ---
 
