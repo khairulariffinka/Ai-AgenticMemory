@@ -1,19 +1,24 @@
-# AgenticMemory Subagent Tutorials
+# AgenticMemory Tutorials
 
-Comprehensive guide to using all 16 subagents in AgenticMemory.
+> **New here?** Start with [README.md](../README.md) for quick setup.
+> 
+> This page is for **detailed guides** when you want to learn more.
 
 ---
 
 ## Table of Contents
 
-1. [🟢 Coder Subagents](#-coder-subagents)
-2. [🔴 Auditor Subagents](#-auditor-subagents)
-3. [🔵 Planner](#-planner)
-4. [🟣 Memory Subagents](#-memory-subagents)
-5. [🟡 Utility Subagents](#-utility-subagents)
-6. [🎯 Primary Agent](#-primary-agent)
-7. [⚡ Operating Modes](#-operating-modes)
-8. [💾 Relationship Memory](#-relationship-memory)
+### Getting Started (Start Here!)
+1. [🎯 Primary Agent](#-primary-agent) - How to use the main agent
+2. [⚡ Operating Modes](#-operating-modes) - Choose the right mode for your task
+3. [💾 Relationship Memory](#-relationship-memory) - How AgenticMemory remembers you
+
+### Advanced Topics
+4. [🟢 Coder Subagents](#-coder-subagents) - Backend, Frontend, Tests, DevOps
+5. [🔴 Auditor Subagents](#-auditor-subagents) - Security, Performance, Style
+6. [🔵 Planner](#-planner) - Planning & task breakdown
+7. [🟣 Memory Subagents](#-memory-subagents) - Context & decisions
+8. [🟡 Utility Subagents](#-utility-subagents) - Git, Docs, Research
 
 ---
 

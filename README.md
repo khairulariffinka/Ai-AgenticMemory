@@ -1,61 +1,51 @@
 # AgenticMemory
 
-**A customizable AI coding agent framework for OpenCode**
+**AI Coding Assistant for OpenCode**
 
-AgenticMemory is an OpenCode-compliant AI agent framework featuring persistent memory, parallel subagent execution, and intelligent task routing. It features multi-mode operation, 16 specialized subagents, and an easy rename protocol for personalization.
-
-**Topics:** `ai-agent` `opencode` `coding-assistant` `memory-system` `subagent` `parallel-execution` `customizable` `agentic-ai`
-
-## Features
-
-| Feature | Description |
-|---------|-------------|
-| **Persistent Memory** | Tracks decisions, patterns, project context across sessions |
-| **Relationship Memory** | Remembers user preferences, language, interaction patterns |
-| **Multi-mode** | dev, quick, review, refactor, debug, test modes |
-| **Parallel Execution** | Subagents run simultaneously for faster delivery |
-| **Intelligent Routing** | Automatically selects optimal subagents for tasks |
-| **Adaptive Workflow** | Workflow adapts based on project context and user preferences |
-| **Customizable** | Rename the agent to your preferred name |
-| **Easy Updates** | Smart update preserves your customizations |
-
-## Quick Start
-
-### 1. Install
+Give it a task, it handles the rest.
 
 ```bash
-"Load install.md"
-```
-
-### 2. Activate AgenticMemory
-
-After installation, activate AgenticMemory using one of these methods:
-
-#### Method A: Tab Key (Recommended)
-```
-[TAB] → Build → Plan → agentic-memory
-```
-Press Tab to cycle through agents until you reach agentic-memory.
-
-#### Method B: @ Mention
-```
-@agentic-memory, build a login page for me
-```
-
-### 3. Give a Task
-
-```bash
-build a login page for me
-```
-
-Or with specific mode:
-
-```bash
-quick, build a test API for user
-review, audit the auth module code
+"build a login page"
+"create a REST API"
+"review my code"
 ```
 
 ---
+
+## Get Started in 3 Steps
+
+### 1. Install
+
+```
+"Load install.md"
+```
+
+### 2. Activate
+
+Press `TAB` until you see `agentic-memory`
+
+### 3. Use
+
+Just tell it what you want:
+
+```
+build a user authentication system
+```
+
+---
+
+## What Can It Do?
+
+| Task | Example |
+|------|---------|
+| Build features | `build a login page` |
+| Create APIs | `create a REST API for products` |
+| Write tests | `write tests for auth module` |
+| Review code | `review the payment module` |
+| Fix bugs | `debug: login returns 500 error` |
+| Docker setup | `set up Docker for my app` |
+
+**That's it!** No need to manage 16 subagents - AgenticMemory handles everything automatically.
 
 ## How to Use
 
