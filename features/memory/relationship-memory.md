@@ -1,6 +1,6 @@
 # Relationship Memory
 
-> Rei learns and remembers user preferences, communication style, and interaction patterns.
+> AgenticMemory learns and remembers user preferences, communication style, and interaction patterns.
 
 ## What This Does
 
@@ -12,9 +12,9 @@
 
 ## How It Works
 
-1. **Observation Phase**: Rei observes user patterns during interactions
+1. **Observation Phase**: AgenticMemory observes user patterns during interactions
 2. **Learning Phase**: Key preferences are stored in relationship-memory.md
-3. **Application Phase**: Rei applies learned preferences in future interactions
+3. **Application Phase**: AgenticMemory applies learned preferences in future interactions
 
 ## Memory Structure
 
@@ -58,11 +58,11 @@
 
 ### Automatic Learning
 
-Rei automatically learns from your interactions:
+AgenticMemory automatically learns from your interactions:
 
 ```
 User: "Saya suka responses yang ringkas"
-Rei: [Records preference: Response Style = Brief]
+AgenticMemory: [Records preference: Response Style = Brief]
     ✓ Dah ingati! Saya akan bagi responses yang lebih ringkas.
 ```
 
@@ -70,7 +70,7 @@ Rei: [Records preference: Response Style = Brief]
 
 ```
 User: "Saya nak guna Vue je, bukan React"
-Rei: [Updates: Preferred Framework = Vue]
+AgenticMemory: [Updates: Preferred Framework = Vue]
     ✓ Framework preference updated to Vue.
 ```
 
@@ -78,14 +78,14 @@ Rei: [Updates: Preferred Framework = Vue]
 
 ```
 User: "show profile"
-Rei: [Reads relationship-memory.md]
+AgenticMemory: [Reads relationship-memory.md]
     [Displays user profile]
 ```
 
 ## Integration
 
-- **Auto-load**: Rei loads relationship-memory.md at session start
-- **Update**: After each session, Rei updates with new learnings
+- **Auto-load**: AgenticMemory loads relationship-memory.md at session start
+- **Update**: After each session, AgenticMemory updates with new learnings
 - **Persist**: All preferences saved to relationship-memory.md
 
 ## File Location
@@ -98,4 +98,4 @@ project-folder/
 
 ---
 
-**Part of Rei Memory System for opencode.ai**
+**Part of AgenticMemory Memory System for opencode.ai**

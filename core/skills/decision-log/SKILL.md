@@ -78,7 +78,7 @@ Log a decision when:
 **Chosen:** Option A: JWT
 
 ### Rationale
-[B详细 explanation - "because X" not "because it's better"]
+[Detailed explanation - "because X" not "because it's better"]
 - Primary reason 1
 - Primary reason 2
 
