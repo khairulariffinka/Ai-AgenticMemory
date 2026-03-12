@@ -50,6 +50,8 @@ Files to install:
 - database-expert.md
 - api-designer.md
 - doc-scout.md
+- brs-manager.md
+- sds-manager.md
 
 ### Step 3: Install Core Skills
 
@@ -71,6 +73,8 @@ Folders to install:
 - security/
 - research/
 - decision-log/
+- brs/
+- sds/
 
 ### Step 4: Install Primary Agent
 
@@ -124,8 +128,8 @@ Check that all files are in place:
 
 Installed:
 - 1 Primary agent: agentic-memory
-- 19 Subagents
-- 7 Skills
+- 21 Subagents
+- 9 Skills
 
 Next Steps:
 1. Restart OpenCode or reload configuration

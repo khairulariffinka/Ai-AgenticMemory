@@ -45,7 +45,7 @@ build a user authentication system
 | Fix bugs | `debug: login returns 500 error` |
 | Docker setup | `set up Docker for my app` |
 
-**That's it!** No need to manage 19 subagents - AgenticMemory handles everything automatically.
+**That's it!** No need to manage 21 subagents - AgenticMemory handles everything automatically.
 
 ## How to Use
 
@@ -514,6 +514,12 @@ Skills are loaded dynamically based on task requirements. See [TUTORIALS.md](./T
 | `database-expert` | SQL optimization, schema design |
 | `api-designer` | REST/GraphQL API design |
 | `doc-scout` | Fetch live docs for external libraries |
+
+### Specification Subagents
+| Agent | Specialty |
+|-------|-----------|
+| `brs-manager` | Business Requirement Specifications with scope protection |
+| `sds-manager` | System Design Specifications with architecture tracking |
 
 > 📚 **Want detailed tutorials?** See [TUTORIALS.md](./TUTORIALS.md) for complete guides on every subagent with examples and workflows.
 

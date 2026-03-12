@@ -65,6 +65,8 @@ cp core/agents/decision-log.md ~/.config/opencode/agents/
 cp core/agents/database-expert.md ~/.config/opencode/agents/
 cp core/agents/api-designer.md ~/.config/opencode/agents/
 cp core/agents/doc-scout.md ~/.config/opencode/agents/
+cp core/agents/brs-manager.md ~/.config/opencode/agents/
+cp core/agents/sds-manager.md ~/.config/opencode/agents/
 ```
 
 ### Step 4: Update Core Skills
@@ -80,6 +82,8 @@ cp -r core/skills/memory ~/.config/opencode/skills/
 cp -r core/skills/security ~/.config/opencode/skills/
 cp -r core/skills/research ~/.config/opencode/skills/
 cp -r core/skills/decision-log ~/.config/opencode/skills/
+cp -r core/skills/brs ~/.config/opencode/skills/
+cp -r core/skills/sds ~/.config/opencode/skills/
 ```
 
 ### Step 5: Add New Components (if any)
@@ -186,8 +190,8 @@ Update available! ✓
 
 Analyzing your setup...
 - Primary agent: "nova" (renamed by user)
-- Core agents: 19 (will update)
-- Core skills: 7 (will update)
+- Core agents: 21 (will update)
+- Core skills: 9 (will update)
 - New components: 2 agents, 1 skill
 
 Proceed with update? [Y/n]: y
@@ -202,7 +206,7 @@ Updating...
 
 ✅ Update Complete!
 
-Updated: 19 agents, 7 skills
+Updated: 21 agents, 9 skills
 Primary agent "nova": Updated with new features (your custom name preserved)
 Added: 2 agents (api-coder, api-auditor), 1 skill (api)
 

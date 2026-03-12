@@ -4,7 +4,7 @@
 > 
 > This page is for **detailed guides** when you want to learn more.
 
-Comprehensive guide to using all 19 subagents in AgenticMemory.
+Comprehensive guide to using all 21 subagents in AgenticMemory.
 
 ---
 
@@ -1783,6 +1783,176 @@ Agent: Generating Firebase v9 code ✓
 
 ---
 
+## 19. BRS-Manager - Business Requirement Specifications
+
+### What It Does
+
+Creates comprehensive Business Requirement Specification (BRS) documents from meeting notes, protects scope with clear exclusions, and manages requirement changes.
+
+### Key Capabilities
+
+- **Auto-detect project type** (Web/Mobile/API)
+- **Bilingual support** (English + Bahasa Melayu)
+- **MoSCoW prioritization** (MUST/SHOULD/COULD/WON'T)
+- **Scope protection** (Section 8 exclusions)
+- **Change management** (impact analysis & approval)
+
+### Usage Examples
+
+#### Create Initial BRS
+
+```
+User: "@brs-manager create BRS"
+
+[Meeting Notes]
+Client: Pak Ali
+Business: Kedai runcit nak online
+Budget: RM 50K
+Timeline: 3 bulan
+Features: Product catalog, cart, payment
+
+brs-manager:
+✓ Detected: Web Application (85% confidence)
+✓ Selected: brs-web-template.md
+✓ Generated: BRS-v1.0.md (16 sections, bilingual)
+✓ Requirements: 30 total (10 MUST, 8 SHOULD, 6 NICE)
+
+Output: docs/BRS-v1.0.md
+```
+
+#### Create Change Request (Scope Protection)
+
+```
+User: "Client wants to add TikTok auto-post"
+
+brs-manager:
+⚠️ IMPACT ANALYSIS
+├─ Technical: New integration, video processing
+├─ Timeline: +3 weeks
+├─ Cost: +RM 16,500
+└─ Risk: HIGH (API dependency)
+
+📋 COMPARISON
+Current BRS: No auto-posting
+Proposed: Add TikTok integration
+
+📄 Generated: CR-001-tiktok-integration.md
+Recommendation: "Defer to Phase 2"
+
+Client reviews impact → Decides
+✓ Scope protected with clear documentation
+```
+
+### BRS Structure
+
+1. Executive Summary (bilingual)
+2. Stakeholders
+3. Business Objectives
+4. User Personas
+5. Functional Requirements (MoSCoW)
+6. Non-Functional Requirements
+7. Constraints & Dependencies
+8. **Scope Exclusions** ⭐ (Critical for protection)
+9. Future Phases
+10. Timeline & Milestones
+11. Budget Estimate
+12. Risk Assessment
+13. Assumptions
+14. Approval Matrix
+15. Change Log
+
+### Best Practices
+
+✅ **Always include Section 8** (Scope Exclusions)  
+✅ **Number requirements** (REQ-001, REQ-002)  
+✅ **Use MoSCoW** untuk prioritization  
+✅ **Require approval** before BRS changes  
+✅ **Track versions** (v1.0 → v1.1)
+
+---
+
+## 20. SDS-Manager - System Design Specifications
+
+### What It Does
+
+Generates comprehensive System Design Specification (SDS) from BRS, creates technical architecture docs, database schemas, API specs, and tracks architectural decisions.
+
+### Key Capabilities
+
+- **Architecture design** (diagrams + components)
+- **Database modeling** (ERD + schemas)
+- **API specification** (OpenAPI 3.0 style)
+- **Decision logging** (architectural rationale)
+- **Traceability** (links to BRS requirements)
+
+### Usage Examples
+
+#### Generate SDS from BRS
+
+```
+User: "@sds-manager create SDS from BRS"
+
+sds-manager:
+✓ Reading BRS-v1.0.md (30 requirements)
+✓ Designing architecture:
+  - Stack: Laravel + React + MySQL
+  - Pattern: Monolithic with service layer
+✓ Modeling database:
+  - 8 entities identified
+  - ERD generated (Mermaid)
+✓ Specifying APIs:
+  - 15 endpoints
+  - OpenAPI format
+✓ Logging decisions:
+  - DEC-001: Laravel vs Node.js
+  - DEC-002: MySQL vs PostgreSQL
+
+Output: docs/SDS-v1.0.md
+```
+
+#### Update SDS for Change Request
+
+```
+User: "@sds-manager update SDS for CR-001"
+
+sds-manager:
+✓ Analyzing CR-001 (TikTok integration)
+✓ Technical impact:
+  - Add TikTok API service
+  - New field: tiktok_product_id
+  - Background jobs for video processing
+✓ Updating SDS to v1.1
+✓ Logging new decision:
+  - DEC-005: TikTok integration approach
+
+SDS updated with new specs
+```
+
+### SDS Structure
+
+1. System Overview
+2. Architecture (diagrams)
+3. Data Model (ERD + schemas)
+4. API Specifications
+5. Component Design
+6. Security Architecture
+7. Scalability & Performance
+8. **Decision Log** ⭐ (Architectural rationale)
+9. Implementation Phases
+10. Testing Strategy
+11. Deployment Architecture
+12. Future Considerations
+
+### Best Practices
+
+✅ **Trace to BRS** (every spec links to REQ-xxx)  
+✅ **Use Mermaid** untuk diagrams  
+✅ **Log decisions** (why we chose X over Y)  
+✅ **Version sync** (SDS v1.0 ↔ BRS v1.0)  
+✅ **English only** (technical specs)
+
+---
+
 ## Summary Table
 
 | # | Subagent | Category | When to Use |
@@ -1806,6 +1976,8 @@ Agent: Generating Firebase v9 code ✓
 | 17 | database-expert | Utility | Database design, SQL optimization |
 | 18 | api-designer | Utility | REST/GraphQL API design |
 | 19 | doc-scout | Utility | Fetch live docs for external libraries |
+| 20 | brs-manager | Specification | Business requirements, scope protection |
+| 21 | sds-manager | Specification | System design, architecture specs |
 
 ---
 
@@ -1831,6 +2003,29 @@ Agent: Generating Firebase v9 code ✓
 @security-auditor - Security check
 @performance-auditor - Performance check
 @style-auditor - Style check
+```
+
+**New project with specifications:**
+```
+1. @brs-manager - Create BRS from client meeting
+2. Client approves BRS
+3. @sds-manager - Generate SDS from BRS
+4. @planner - Create implementation plan from SDS
+5. @backend-coder - Implement backend from SDS specs
+6. @frontend-coder - Implement frontend from SDS specs
+7. @test-coder - Write tests based on BRS acceptance criteria
+8. @auditor - Verify implementation matches SDS
+```
+
+**Handle scope change:**
+```
+1. Client requests new feature
+2. @brs-manager - Create change request (CR)
+3. Review impact (time/cost/risk)
+4. Client approves CR
+5. @sds-manager - Update SDS
+6. @planner - Adjust timeline
+7. @coder - Implement change
 ```
 
 ---
