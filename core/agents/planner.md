@@ -182,6 +182,233 @@ Each task includes:
 **2024-01-01 10:00** - Plan created
 ```
 
+## BRS/SDS Integration ⭐ NEW
+
+### Auto-Generate Tasks from BRS/SDS
+
+**Purpose:** Automatically translate BRS requirements into planner.md tasks with accurate effort estimation and optimal agent assignment.
+
+**Workflow:**
+```
+BRS Requirements → Pattern Recognition → Task Breakdown → 
+Effort Estimation → Agent Assignment → Dependency Mapping → 
+Parallel Groups → planner.md
+```
+
+### Integration Commands
+
+#### Generate Plan from BRS
+```bash
+User: "@planner create plan from BRS"
+
+planner:
+1. Read docs/BRS-v1.0.md
+2. Parse requirements (REQ-001 to REQ-030)
+3. For each requirement:
+   - Detect pattern (auth, payment, CRUD, etc.)
+   - Break down into tasks (frontend, backend, database, testing)
+   - Estimate effort based on complexity
+   - Assign to appropriate agent
+4. Detect dependencies between tasks
+5. Group into parallel execution groups
+6. Generate planner.md dengan traceability
+
+Output: planner.md with 68 tasks, 5 parallel groups, 342 hours total
+```
+
+#### Generate Plan from BRS + SDS
+```bash
+User: "@planner create plan from BRS and SDS"
+
+planner:
+1. Read BRS for requirements
+2. Read SDS for:
+   - Tech stack (affects effort estimates)
+   - Database schema (affects DB tasks)
+   - API specs (affects backend tasks)
+   - Architecture (affects dependency mapping)
+3. Generate more accurate plan dengan technical context
+```
+
+#### Update Plan After BRS Change
+```bash
+User: "@planner update plan for CR-001"
+
+planner:
+1. Read CR-001 (change request)
+2. Analyze impact on existing tasks
+3. Add new tasks for change
+4. Adjust affected task estimates
+5. Update timeline
+6. Log changes in planner.md
+```
+
+### Task Breakdown Patterns
+
+#### Pattern: User Authentication (REQ-xxx)
+```
+Input: "User boleh register dan login dengan email"
+
+Tasks Generated:
+├─ Backend:
+│  ├─ BE-001: Create User model (2h) @backend-coder
+│  ├─ BE-002: Create register API (3h) @backend-coder
+│  ├─ BE-003: Create login API (2h) @backend-coder
+│  └─ BE-004: Add JWT/Sanctum auth (3h) @backend-coder
+├─ Frontend:
+│  ├─ FE-001: Create register form (3h) @frontend-coder
+│  ├─ FE-002: Create login form (2h) @frontend-coder
+│  └─ FE-003: Handle auth state (3h) @frontend-coder
+├─ Database:
+│  └─ DB-001: Create users table (1h) @database-expert
+└─ Testing:
+   ├─ TEST-001: Auth unit tests (2h) @test-coder
+   └─ TEST-002: Auth E2E tests (3h) @test-coder
+
+Total: 11 tasks, 24 hours
+Traceability: All tasks linked to REQ-xxx
+```
+
+#### Pattern: Payment Integration (REQ-xxx)
+```
+Input: "Sistem boleh terima pembayaran online"
+
+Tasks Generated:
+├─ Backend:
+│  ├─ BE-010: Research payment gateway (2h) @backend-coder
+│  ├─ BE-011: Create PaymentService (8h) @backend-coder
+│  ├─ BE-012: Integrate iPay88/Stripe (10h) @backend-coder
+│  ├─ BE-013: Create payment webhook handlers (6h) @backend-coder
+│  └─ BE-014: Add payment retry logic (4h) @backend-coder
+├─ Frontend:
+│  ├─ FE-010: Create payment form (4h) @frontend-coder
+│  └─ FE-011: Handle payment callbacks (3h) @frontend-coder
+├─ Database:
+│  └─ DB-002: Create payments table (2h) @database-expert
+└─ Testing:
+   ├─ TEST-010: Payment service tests (4h) @test-coder
+   └─ TEST-011: Payment E2E tests (6h) @test-coder
+
+Total: 11 tasks, 49 hours
+Risk: HIGH (external dependency)
+```
+
+#### Pattern: Product Catalog (REQ-xxx)
+```
+Input: "Customer boleh browse dan search produk"
+
+Tasks Generated:
+├─ Backend:
+│  ├─ BE-020: Create Product model (2h) @backend-coder
+│  ├─ BE-021: Create Category model (1h) @backend-coder
+│  ├─ BE-022: Create product API endpoints (6h) @backend-coder
+│  ├─ BE-023: Implement search functionality (8h) @backend-coder
+│  └─ BE-024: Add product filters (4h) @backend-coder
+├─ Frontend:
+│  ├─ FE-020: Create product listing page (6h) @frontend-coder
+│  ├─ FE-021: Create product detail page (5h) @frontend-coder
+│  ├─ FE-022: Create search component (4h) @frontend-coder
+│  └─ FE-023: Add filter sidebar (3h) @frontend-coder
+├─ Database:
+│  ├─ DB-003: Create products table (2h) @database-expert
+│  └─ DB-004: Create categories table (1h) @database-expert
+└─ Testing:
+   ├─ TEST-020: Product API tests (3h) @test-coder
+   └─ TEST-021: Search functionality tests (4h) @test-coder
+
+Total: 14 tasks, 49 hours
+```
+
+### Effort Estimation Engine
+
+**Base Effort by Pattern:**
+| Pattern | Simple | Medium | Complex |
+|---------|--------|--------|---------|
+| User Auth | 16h | 24h | 40h |
+| Payment | 32h | 48h | 80h |
+| Product Catalog | 24h | 40h | 64h |
+| Order Management | 32h | 48h | 72h |
+| Reporting | 16h | 32h | 56h |
+| Admin Dashboard | 24h | 40h | 64h |
+
+**Complexity Multipliers:**
+- Standard implementation: 1.0x
+- Custom business logic: 1.3x
+- Integration dengan 3rd party: 1.5x
+- High security requirements: 1.4x
+- High performance requirements: 1.6x
+
+**Example:**
+```
+Payment integration (Medium base: 48h)
+├─ Custom business logic: 1.3x
+├─ 3rd party integration: 1.5x
+└─ Total: 48h × 1.3 × 1.5 = 93.6h ≈ 94h
+```
+
+### Agent Assignment Rules
+
+**Automatic Assignment:**
+```
+Task contains "API" or "backend" → @backend-coder
+Task contains "UI" or "frontend" or "page" → @frontend-coder
+Task contains "database" or "table" or "schema" → @database-expert
+Task contains "test" → @test-coder
+Task contains "security" → @security-auditor
+Task complexity > 8h → Suggest splitting
+```
+
+### Traceability Matrix
+
+**Auto-Generated dalam planner.md:**
+```markdown
+## Traceability Matrix
+
+| Requirement | Tasks | Status | % Complete |
+|-------------|-------|--------|------------|
+| REQ-001: User Auth | BE-001, BE-002, FE-001, TEST-001 | 🔄 In Progress | 75% |
+| REQ-002: Product Catalog | BE-020, FE-020, DB-003, ... | ✅ Complete | 100% |
+| REQ-010: Payment | BE-010, BE-011, ... | ⏳ Pending | 0% |
+
+## Requirement Details
+
+### REQ-001: User Authentication
+**Description:** User boleh register dan login dengan email
+**Priority:** MUST HAVE
+**Acceptance Criteria:** 5 items
+
+**Implementation:**
+- [x] BE-001: Create User model (2h)
+- [x] BE-002: Create register API (3h)
+- [x] FE-001: Create register form (3h)
+- [ ] TEST-001: Auth unit tests (2h)
+- **Status:** 3/4 tasks complete (75%)
+```
+
+### Integration with @decision-log
+
+**Auto-log planning decisions:**
+```markdown
+DEC-020: Task Estimation for REQ-015
+Context: High complexity requirement (AI recommendation engine)
+Decision: Estimate 40h instead of standard 8h
+Rationale: 
+  - Algorithm complexity
+  - ML integration required
+  - Proof of concept needed first
+Date: 2024-03-20
+Status: ACTIVE
+```
+
+### Dynamic Replanning Triggers
+
+**BRS/SDS Specific:**
+- BRS updated (new version)
+- Change request approved (CR-xxx)
+- SDS architecture changed
+- New requirements added
+- Scope reduced (move to exclusions)
+
 ## Dynamic Replanning
 
 When changes occur:
