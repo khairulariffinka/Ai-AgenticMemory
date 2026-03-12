@@ -33,6 +33,7 @@ Copy-Item -Recurse core/agents/* ~/.config/opencode/agents/
 Files to install:
 - memory.md
 - planner.md
+- research.md
 - coder.md
 - auditor.md
 - security.md
@@ -45,6 +46,10 @@ Files to install:
 - style-auditor.md
 - git-manager.md
 - docs-manager.md
+- decision-log.md
+- database-expert.md
+- api-designer.md
+- doc-scout.md
 
 ### Step 3: Install Core Skills
 
@@ -64,6 +69,8 @@ Folders to install:
 - auditor/
 - memory/
 - security/
+- research/
+- decision-log/
 
 ### Step 4: Install Primary Agent
 
@@ -117,8 +124,8 @@ Check that all files are in place:
 
 Installed:
 - 1 Primary agent: agentic-memory
-- 14 Subagents
-- 6 Skills
+- 19 Subagents
+- 7 Skills
 
 Next Steps:
 1. Restart OpenCode or reload configuration
