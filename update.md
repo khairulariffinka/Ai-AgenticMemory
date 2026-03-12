@@ -48,6 +48,7 @@ Core agents are ALWAYS updated (users should not modify these):
 # Files to update (overwrite existing):
 cp core/agents/memory.md ~/.config/opencode/agents/
 cp core/agents/planner.md ~/.config/opencode/agents/
+cp core/agents/research.md ~/.config/opencode/agents/
 cp core/agents/coder.md ~/.config/opencode/agents/
 cp core/agents/auditor.md ~/.config/opencode/agents/
 cp core/agents/security.md ~/.config/opencode/agents/
@@ -60,6 +61,10 @@ cp core/agents/performance-auditor.md ~/.config/opencode/agents/
 cp core/agents/style-auditor.md ~/.config/opencode/agents/
 cp core/agents/git-manager.md ~/.config/opencode/agents/
 cp core/agents/docs-manager.md ~/.config/opencode/agents/
+cp core/agents/decision-log.md ~/.config/opencode/agents/
+cp core/agents/database-expert.md ~/.config/opencode/agents/
+cp core/agents/api-designer.md ~/.config/opencode/agents/
+cp core/agents/doc-scout.md ~/.config/opencode/agents/
 ```
 
 ### Step 4: Update Core Skills
@@ -73,6 +78,8 @@ cp -r core/skills/coder ~/.config/opencode/skills/
 cp -r core/skills/auditor ~/.config/opencode/skills/
 cp -r core/skills/memory ~/.config/opencode/skills/
 cp -r core/skills/security ~/.config/opencode/skills/
+cp -r core/skills/research ~/.config/opencode/skills/
+cp -r core/skills/decision-log ~/.config/opencode/skills/
 ```
 
 ### Step 5: Add New Components (if any)
@@ -179,8 +186,8 @@ Update available! ✓
 
 Analyzing your setup...
 - Primary agent: "nova" (renamed by user)
-- Core agents: 14 (will update)
-- Core skills: 5 (will update)
+- Core agents: 19 (will update)
+- Core skills: 7 (will update)
 - New components: 2 agents, 1 skill
 
 Proceed with update? [Y/n]: y
@@ -195,7 +202,7 @@ Updating...
 
 ✅ Update Complete!
 
-Updated: 14 agents, 5 skills
+Updated: 19 agents, 7 skills
 Primary agent "nova": Updated with new features (your custom name preserved)
 Added: 2 agents (api-coder, api-auditor), 1 skill (api)
 
