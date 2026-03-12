@@ -1953,6 +1953,198 @@ SDS updated with new specs
 
 ---
 
+### Practical Examples
+
+#### Example 1: E-Commerce Project (Full Workflow)
+
+**Scenario:** Client (Pak Ali) wants online grocery store
+
+```
+Week 0 - Discovery:
+├─ Meeting dengan Pak Ali
+├─ Take notes:
+│  ├─ Business: Kedai runcit di Taman Melati
+│  ├─ Budget: RM 50,000
+│  ├─ Timeline: 3 bulan
+│  └─ Features: Produk, cart, payment, delivery
+│
+├─ @brs-manager create BRS
+│  ├─ Detect: Web Application (85% confidence)
+│  ├─ Generate: BRS-v1.0.md
+│  ├─ Requirements: 30 total
+│  │   ├─ 10 MUST HAVE
+│  │   ├─ 8 SHOULD HAVE
+│  │   └─ 6 NICE TO HAVE
+│  └─ Section 8 exclusions: Mobile app, offline mode, etc.
+│
+├─ Send BRS to Pak Ali
+├─ Pak Ali reviews
+│  ├─ ✅ Understand scope
+│  ├─ ✅ Check budget RM 48,400
+│  └─ ✅ Approve timeline
+│
+├─ Digital signature dalam SIGNATURES.md
+└─ BRS v1.0 APPROVED ✓
+
+Week 1 - Technical Design:
+├─ @sds-manager create SDS from BRS
+│  ├─ Read BRS-v1.0.md
+│  ├─ Design architecture:
+│  │   ├─ Stack: Laravel + React + MySQL
+│  │   ├─ Pattern: Monolithic with service layer
+│  │   └─ Justification dalam Decision Log
+│  ├─ Design database:
+│  │   ├─ 8 entities (users, products, orders, etc.)
+│  │   ├─ ERD diagram (Mermaid)
+│  │   └─ Indexes untuk optimization
+│  ├─ Design APIs:
+│  │   ├─ 15 endpoints
+│  │   ├─ OpenAPI format
+│  │   └─ Authentication: JWT
+│  └─ Log decisions:
+│      ├─ DEC-001: Laravel vs Node.js
+│      ├─ DEC-002: React vs Vue
+│      └─ DEC-003: MySQL vs PostgreSQL
+│
+└─ SDS-v1.0.md generated ✓
+
+Week 2-12 - Development:
+├─ @planner create plan from BRS and SDS
+│  ├─ Break down 30 requirements → 45 tasks
+│  ├─ Assign kepada team
+│  └─ Timeline: 12 weeks
+│
+├─ Development sambil refer:
+│  ├─ BRS: Check acceptance criteria
+│  ├─ SDS: Check API specs, database schema
+│  └─ planner.md: Track progress
+│
+└─ Deliver on time ✓
+```
+
+#### Example 2: Handling Scope Creep
+
+**Scenario:** Week 6, client requests new feature
+
+```
+Client: "Tambah live chat support boleh?"
+
+Without BRS/SDS:
+You: "Er... boleh kot..."
+├─ You estimate: "1 minggu je"
+├─ Actually takes: 3 weeks
+├─ Project delayed
+├─ Client frustrated
+└─ You lose money
+
+With BRS/SDS:
+You: "Boss, check BRS Section 8"
+├─ Buka BRS-v1.0.md
+├─ Section 8: Scope Exclusions
+│  └─ "❌ Real-time chat (Future Phase)"
+├─ "Tak dalam original scope. Saya create Change Request."
+│
+├─ @brs-manager create change request
+│  ├─ CR-001-live-chat.md generated
+│  ├─ Impact analysis:
+│  │   ├─ Technical: WebSocket, new service
+│  │   ├─ Effort: 60 hours (3 weeks)
+│  │   ├─ Cost: +RM 12,000
+│  │   └─ Risk: MEDIUM
+│  ├─ Options:
+│  │   1. Accept: +3 weeks, +RM 12K
+│  │   2. Defer: Phase 2
+│  │   3. Simplified: Basic chat (1 week, +RM 4K)
+│  └─ Recommendation: "Defer to Phase 2"
+│
+├─ Present to client
+│  ├─ Show CR-001 impact
+│  ├─ Compare dengan budget/timeline
+│  └─ Offer alternatives
+│
+├─ Client decides:
+│  └─ "Takpelah, Phase 2 lah"
+│
+└─ Result:
+   ├─ ✅ Scope protected
+   ├─ ✅ Timeline maintained
+   ├─ ✅ Budget preserved
+   └─ ✅ Client happy (transparent process)
+```
+
+#### Example 3: Developer Onboarding
+
+**Scenario:** New developer joins project Week 4
+
+```
+Without Documentation:
+New Dev: "Projek ni pasal apa?"
+You explain 30 minutes...
+New Dev: "Database schema macam mana?"
+You explain lagi 20 minutes...
+New Dev: "Kenapa guna Laravel?"
+You explain lagi 15 minutes...
+Total: 65 minutes, new dev still confused
+
+With BRS/SDS:
+New Dev: "Projek ni pasal apa?"
+You: "Baca docs/BRS-v1.0.md"
+├─ Section 1: Executive Summary
+├─ Section 5: Functional Requirements
+└─ Understand dalam 10 minit
+
+New Dev: "Database schema macam mana?"
+You: "Baca docs/SDS-v1.0.md Section 3"
+├─ ERD diagram
+├─ Table definitions
+├─ Relationships
+└─ Understand dalam 10 minit
+
+New Dev: "Kenapa guna Laravel?"
+You: "Check SDS Section 8 Decision Log"
+├─ DEC-001: Complete rationale
+├─ Trade-offs documented
+└─ Understand dalam 5 minit
+
+Total: 25 minutes, new dev productive
+New Dev: "Ready to code! 💪"
+```
+
+#### Example 4: Traceability During Testing
+
+**Scenario:** QA testing deliverables
+
+```
+QA: "Feature X dah siap ke?"
+
+Without BRS:
+Dev: "Siap dah"
+QA: "Acceptance criteria apa?"
+Dev: "Er... dia boleh save data?"
+QA test: ❌ Fail (not what client wanted)
+
+With BRS:
+QA: "Check BRS REQ-012"
+├─ Open BRS-v1.0.md
+├─ Section 5.1: REQ-012 Product Reviews
+│  ├─ Description: "User boleh review products 1-5 stars"
+│  ├─ Acceptance Criteria:
+│  │   ├─ 1. Display 5-star rating interface
+│  │   ├─ 2. Save rating + review text
+│  │   ├─ 3. Show average rating on product page
+│  │   └─ 4. Sort reviews by date/helpful
+│  └─ Priority: SHOULD HAVE
+│
+QA test based on acceptance criteria:
+├─ ✅ Display rating interface
+├─ ✅ Save rating + text
+├─ ✅ Show average rating
+├─ ✅ Sort reviews
+└─ Result: PASS ✓
+```
+
+---
+
 ## Summary Table
 
 | # | Subagent | Category | When to Use |

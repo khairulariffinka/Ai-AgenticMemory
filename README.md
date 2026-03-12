@@ -474,6 +474,236 @@ core/skills/
 
 Skills are loaded dynamically based on task requirements. See [TUTORIALS.md](./TUTORIALS.md) for details.
 
+---
+
+## 📋 BRS & SDS: Project Specification Management
+
+AgenticMemory now includes comprehensive **Business Requirement Specification (BRS)** and **System Design Specification (SDS)** management for professional project documentation.
+
+### 🎯 What Are BRS & SDS?
+
+**BRS (Business Requirement Specification)**
+- **Purpose:** Document what the system should do from a business perspective
+- **Audience:** Clients, stakeholders, project managers
+- **Content:** Requirements, scope, budget, timeline, exclusions
+- **Language:** Bilingual (English + Bahasa Melayu) support
+- **Protection:** Clear scope exclusions prevent scope creep
+
+**SDS (System Design Specification)**
+- **Purpose:** Document how the system will be built technically
+- **Audience:** Developers, architects, technical leads
+- **Content:** Architecture, database design, API specs, decisions
+- **Language:** English (technical standard)
+- **Value:** Clear blueprint for implementation
+
+### 🚀 Quick Start
+
+#### Create Your First BRS
+```bash
+# After meeting with client
+User: "@brs-manager create BRS"
+
+Paste meeting notes or voice transcript here...
+Client: ABC Sdn Bhd
+Project: Inventory Management System
+Budget: RM 40,000
+Timeline: 3 months
+Key features: Stock tracking, reports, alerts
+
+@brs-manager:
+✓ Detected project type: Web Application
+✓ Selected: brs-web-template.md
+✓ Generated: docs/BRS-v1.0.md (16 sections)
+✓ Requirements: 24 total (10 MUST, 8 SHOULD, 6 NICE)
+
+Next: Review BRS with client and get approval
+```
+
+#### Create SDS from BRS
+```bash
+# After BRS approved by client
+User: "@sds-manager create SDS from BRS"
+
+@sds-manager:
+✓ Reading BRS-v1.0.md (24 requirements)
+✓ Designing architecture: Laravel + React + MySQL
+✓ Creating database ERD (6 entities)
+✓ Specifying APIs (12 endpoints)
+✓ Logging architectural decisions (3 decisions)
+
+Generated: docs/SDS-v1.0.md (12 sections)
+```
+
+#### Handle Change Requests
+```bash
+# When client wants new feature
+User: "@brs-manager create change request"
+
+Feature: Add mobile app support
+
+@brs-manager:
+⚠️ IMPACT ANALYSIS
+├─ Technical: Major architecture change
+├─ Timeline: +6 weeks
+├─ Cost: +RM 25,000
+└─ Risk: HIGH (new tech stack)
+
+📋 COMPARISON
+Current BRS: Web responsive only
+Proposed: Add native mobile apps
+
+Generated: CR-001-mobile-app.md
+Recommendation: "Defer to Phase 2"
+```
+
+### 📊 BRS Structure (16 Sections)
+
+| Section | Content | Bilingual |
+|---------|---------|-----------|
+| 1. Executive Summary | Project overview, goals | ✅ EN + BM |
+| 2. Stakeholders | Who's involved | ✅ EN + BM |
+| 3. Business Objectives | SMART goals | ✅ EN + BM |
+| 4. User Personas | Target users | ✅ EN + BM |
+| 5. Functional Requirements | What system does (MoSCoW) | ✅ EN + BM |
+| 6. Non-Functional Requirements | Performance, security | EN only |
+| 7. Constraints & Dependencies | Limitations | ✅ EN + BM |
+| 8. **Scope Exclusions** ⭐ | What's NOT included | ✅ EN + BM |
+| 9. Future Phases | Roadmap | ✅ EN + BM |
+| 10. Timeline & Milestones | Schedule | EN only |
+| 11. Budget Estimate | Cost breakdown | ✅ EN + BM |
+| 12. Risk Assessment | Potential issues | EN only |
+| 13. Assumptions | What we assume | ✅ EN + BM |
+| 14. Approval Matrix | Sign-off table | ✅ EN + BM |
+| 15. Change Log | Version history | ✅ EN + BM |
+
+**Section 8 (Scope Exclusions) is CRITICAL** - This protects you from scope creep by explicitly stating what's not included.
+
+### 🏗️ SDS Structure (12 Sections)
+
+| Section | Content | Key Value |
+|---------|---------|-----------|
+| 1. System Overview | High-level description | Context |
+| 2. Architecture | Diagrams, components | Blueprint |
+| 3. Data Model | ERD, schemas | Database design |
+| 4. API Specifications | Endpoints, request/response | Integration contract |
+| 5. Component Design | Service layer, classes | Implementation guide |
+| 6. Security Architecture | Auth, authorization | Security requirements |
+| 7. Scalability & Performance | Traffic, caching | Growth planning |
+| 8. **Decision Log** ⭐ | Why we chose X over Y | Knowledge preservation |
+| 9. Implementation Phases | Development roadmap | Project planning |
+| 10. Testing Strategy | Coverage, types | Quality assurance |
+| 11. Deployment Architecture | Infrastructure | DevOps guide |
+| 12. Future Considerations | Phase 2+ prep | Extensibility |
+
+**Section 8 (Decision Log) is CRITICAL** - Documents architectural decisions with rationale for future reference.
+
+### 💡 Common Workflows
+
+#### Workflow 1: New Project Kickoff
+```
+1. Client meeting → Take notes
+2. @brs-manager create BRS
+3. Review BRS with client
+4. Client approves (digital signature)
+5. @sds-manager create SDS from BRS
+6. @planner create implementation plan
+7. Start development
+```
+
+#### Workflow 2: Scope Change Management
+```
+1. Client requests new feature
+2. @brs-manager create change request
+3. Review impact (time/cost/risk)
+4. Present to client
+5. Client decides: Accept/Defer/Reject
+6. If accepted:
+   - Update BRS to v1.1
+   - Update SDS accordingly
+   - Adjust planner timeline
+7. Document decision
+```
+
+#### Workflow 3: Development Reference
+```
+1. Developer starts task
+2. Check SDS Section 4: API specs
+3. Check SDS Section 3: Database schema
+4. Check BRS: Acceptance criteria
+5. Implement dengan confident
+6. Verify against specs
+```
+
+### 🛡️ Scope Protection (Why This Matters)
+
+**Problem:** Client tiba-tiba nak tambah feature
+```
+Client: "Eh tambah TikTok integration boleh?"
+
+Without BRS:
+You: "Er... boleh kot..."
+→ Scope creep
+→ Delayed project
+→ Reduced profit
+
+With BRS:
+You: "Check BRS Section 8 - Scope Exclusions. 
+       TikTok not included dalam Phase 1.
+       Saya boleh create Change Request."
+
+@brs-manager generates CR:
+├─ Effort: +80 hours
+├─ Cost: +RM 16,000
+├─ Timeline: +3 weeks
+└─ Risk: HIGH
+
+Client: "Mahalnya! Takpe dulu lah."
+→ Scope protected
+→ Timeline maintained
+→ Profit preserved
+```
+
+### 🌐 Language Support
+
+**Option 1: English Only**
+```bash
+@brs-manager create BRS english
+```
+All content dalam English.
+
+**Option 2: Bilingual (Default)**
+```bash
+@brs-manager create BRS bilingual
+```
+English primary dengan Bahasa Melayu summaries.
+
+**Best For:**
+- English only: International clients, technical teams
+- Bilingual: Malaysian clients, mixed stakeholders
+
+### 📁 File Organization
+
+```
+project/
+├── docs/
+│   ├── BRS-v1.0.md              # Initial requirements
+│   ├── BRS-v1.1.md              # After CR-001
+│   ├── SDS-v1.0.md              # Technical specs
+│   ├── CHANGELOG.md             # Version history
+│   ├── SIGNATURES.md            # Approvals
+│   └── CR-001-feature-x.md      # Change requests
+└── planner.md                   # Implementation plan
+```
+
+### 🎓 Learning Resources
+
+- **Tutorial #19:** BRS-Manager Deep Dive → [TUTORIALS.md](./TUTORIALS.md#19-brs-manager)
+- **Tutorial #20:** SDS-Manager Deep Dive → [TUTORIALS.md](./TUTORIALS.md#20-sds-manager)
+- **BRS Skill:** Standards & templates → `core/skills/brs/SKILL.md`
+- **SDS Skill:** Standards & patterns → `core/skills/sds/SKILL.md`
+
+---
+
 ## Subagents
 
 ### Coder Subagents
