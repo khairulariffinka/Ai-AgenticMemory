@@ -20,3 +20,6 @@ Thumbs.db
 # Backup files (we have separate backup folder)
 backup/
 history/
+
+# Dependencies
+node_modules/
