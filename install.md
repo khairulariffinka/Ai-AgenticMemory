@@ -133,7 +133,7 @@ Installed:
 
 Next Steps:
 1. Restart OpenCode or reload configuration
-2. Test by saying: "agentic-memory, hello!"
+2. Test by typing: "agentic-memory, hello!"
 3. (Optional) Rename with: "Load rename.md"
 
 To customize the agent name, use the rename protocol.
